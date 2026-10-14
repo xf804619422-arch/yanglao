@@ -462,13 +462,7 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
     </div>
 
     <nav class="nav" id="nav">
-      <div class="nav-label">工作台</div>
-      <div class="nav-item active" data-page="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
-        <span>首页总览</span>
-      </div>
-
-      <div class="nav-label" style="margin-top:18px">业务管理</div>
+      <div class="nav-label">业务管理</div>
       <div class="nav-group open" data-group>
         <button class="nav-parent" data-toggle>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 4.5-3.2 7.2-8 8-4.8-.8-8-3.5-8-8V7z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -530,97 +524,6 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
     </header>
 
     <main class="content">
-      <!-- ===== 首页总览 ===== -->
-      <section class="page active" id="page-home">
-        <div class="page-head">
-          <h1>早安，管理员</h1>
-          <p>这是今日平台运营概览，以下数据为原型占位示例。</p>
-        </div>
-
-        <div class="stats">
-          <div class="card stat">
-            <div class="ico t-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <div class="val">12,486</div>
-            <div class="lbl">注册用户总数</div>
-            <div class="trend up">↑ 12.4%</div>
-          </div>
-          <div class="card stat">
-            <div class="ico t-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5l7-3 7 3v16"/><path d="M9 21v-4h6v4"/></svg></div>
-            <div class="val">328</div>
-            <div class="lbl">合作养老机构</div>
-            <div class="trend up">↑ 8.1%</div>
-          </div>
-          <div class="card stat">
-            <div class="ico t-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div>
-            <div class="val">156</div>
-            <div class="lbl">今日新增预约</div>
-            <div class="trend down">↓ 2.3%</div>
-          </div>
-          <div class="card stat">
-            <div class="ico t-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12a10 10 0 1 1-10-10"/><path d="M22 4L12 14l-3-3"/></svg></div>
-            <div class="val">96.8%</div>
-            <div class="lbl">服务完成率</div>
-            <div class="trend up">↑ 0.6%</div>
-          </div>
-        </div>
-
-        <div class="dash-grid">
-          <div class="card">
-            <div class="card-head"><h3>近一周服务订单趋势</h3><span class="tag">单位：单</span></div>
-            <div class="card-body">
-              <div class="bars">
-                <div class="bar-wrap"><div class="bar" style="height:42%"><span>86</span></div><div class="bar-label">周一</div></div>
-                <div class="bar-wrap"><div class="bar" style="height:58%"><span>118</span></div><div class="bar-label">周二</div></div>
-                <div class="bar-wrap"><div class="bar" style="height:50%"><span>102</span></div><div class="bar-label">周三</div></div>
-                <div class="bar-wrap"><div class="bar" style="height:72%"><span>146</span></div><div class="bar-label">周四</div></div>
-                <div class="bar-wrap"><div class="bar hl" style="height:88%"><span>178</span></div><div class="bar-label">周五</div></div>
-                <div class="bar-wrap"><div class="bar" style="height:64%"><span>130</span></div><div class="bar-label">周六</div></div>
-                <div class="bar-wrap"><div class="bar" style="height:46%"><span>94</span></div><div class="bar-label">周日</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-head"><h3>最新预约动态</h3><span class="tag">实时</span></div>
-            <div class="card-body">
-              <div class="rows">
-                <div class="row">
-                  <div class="r-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V5l7-3 7 3v16"/></svg></div>
-                  <div class="r-main"><b>王秀兰 · 养老机构预约</b><span>祥和养老院 · 床位参观</span></div>
-                  <span class="status ok">已确认</span>
-                </div>
-                <div class="row">
-                  <div class="r-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10.5V21h14V10.5"/></svg></div>
-                  <div class="r-main"><b>李建国 · 居家上门</b><span>助洁服务 · 每周两次</span></div>
-                  <span class="status wait">待派单</span>
-                </div>
-                <div class="row">
-                  <div class="r-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16a8 8 0 1 1-16 0z"/><path d="M7.5 12a4.5 4.5 0 0 0 9 0"/></svg></div>
-                  <div class="r-main"><b>赵桂芳 · 银龄餐厅</b><span>午餐助餐 · 阳光社区站点</span></div>
-                  <span class="status info">已配送</span>
-                </div>
-                <div class="row">
-                  <div class="r-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-                  <div class="r-main"><b>陈美华 · 社区站点</b><span>健康体检活动报名</span></div>
-                  <span class="status ok">已完成</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="quick-head"><h3>业务快捷入口</h3></div>
-        <div class="quick">
-          <a class="card" data-goto="institutions"><div class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V5l7-3 7 3v16"/><path d="M9 21v-4h6v4"/></svg></div><b>养老机构</b><span>机构信息管理</span></a>
-          <a class="card" data-goto="reservation"><div class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div><b>机构预约</b><span>预约审核管理</span></a>
-          <a class="card" data-goto="home-service"><div class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10.5V21h14V10.5"/></svg></div><b>居家上门</b><span>上门服务派单</span></a>
-          <a class="card" data-goto="community"><div class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div><b>社区站点</b><span>站点运营管理</span></a>
-          <a class="card" data-goto="canteen"><div class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16a8 8 0 1 1-16 0z"/><path d="M7.5 12a4.5 4.5 0 0 0 9 0"/></svg></div><b>银龄餐厅</b><span>助餐服务管理</span></a>
-        </div>
-
-        <div class="foot">星龄通 · 养老服务管理平台 · 原型框架 v1.0</div>
-      </section>
-
       <!-- ===== 养老机构 ===== -->
       <section class="page" id="page-institutions">
         <div class="page-head">
@@ -1111,7 +1014,6 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
 <script>
 (function(){
   const pages = {
-    home: {title:'首页总览', crumb:['首页总览']},
     institutions: {title:'养老机构', crumb:['养老服务','养老机构']},
     reservation: {title:'养老机构预约', crumb:['养老服务','养老机构预约']},
     'home-service': {title:'居家上门服务', crumb:['养老服务','居家上门服务']},
@@ -1974,8 +1876,8 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
 
   renderCanteens();
 
-  // 默认进入首页
-  activate('home');
+  // 默认进入养老机构
+  activate('institutions');
 })();
 </script>
 </body>

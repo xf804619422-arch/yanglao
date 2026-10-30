@@ -402,6 +402,8 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
 .tab:hover{color:var(--ink)}
 .tab.active{color:var(--green)}
 .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--green)}
+.tab-count{display:inline-block;margin-left:6px;padding:0 8px;border-radius:10px;background:rgba(0,0,0,.07);font-size:11px;font-weight:600;color:var(--muted);line-height:18px}
+.tab.active .tab-count{background:rgba(31,111,92,.12);color:var(--green)}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 .sub-table{width:100%;border-collapse:collapse;font-size:13px}
@@ -443,6 +445,170 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
 
 /* 页脚 */
 .foot{text-align:center;color:var(--faint);font-size:12px;padding:24px 0 8px}
+
+/* ============ 老年大学 · 机构切换 ============ */
+.org-bar{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:14px 18px;flex-wrap:wrap}
+.org-bar .org-label{font-size:13px;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.org-bar .org-label svg{width:17px;height:17px;color:var(--green)}
+.org-bar select{
+  height:38px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  padding:0 12px;font-size:13px;font-family:var(--font);color:var(--ink);
+  outline:none;cursor:pointer;min-width:210px;transition:border-color .2s,box-shadow .2s;
+}
+.org-bar select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,111,92,.1)}
+.org-bar .org-tip{margin-left:auto;font-size:12px;color:var(--faint);display:flex;align-items:center;gap:6px}
+.org-bar .org-tip .dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
+
+/* ============ 老年大学 · 表单 ============ */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-item{display:flex;flex-direction:column;gap:7px}
+.form-item.full{grid-column:1/-1}
+.form-item label{font-size:12px;color:var(--muted);font-weight:500}
+.form-item label .req{color:#d4694e;margin-left:2px}
+.form-item input,.form-item textarea,.form-item select{
+  min-height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  padding:0 12px;font-size:13px;font-family:var(--font);color:var(--ink);outline:none;
+  transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.form-item textarea{min-height:92px;padding:10px 12px;resize:vertical;line-height:1.7}
+.form-item input:focus,.form-item textarea:focus,.form-item select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,111,92,.1)}
+.form-item .hint{font-size:11.5px;color:var(--faint)}
+
+/* 课程类型单选卡片 */
+.type-radio{display:flex;gap:12px}
+.type-radio label{
+  flex:1;display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--line);
+  border-radius:12px;cursor:pointer;transition:all .2s;background:#fff;
+}
+.type-radio label:hover{border-color:#c9c2b2}
+.type-radio input{display:none}
+.type-radio label.checked{border-color:var(--green);background:rgba(31,111,92,.05);box-shadow:0 0 0 3px rgba(31,111,92,.08)}
+.type-radio .rt-ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.type-radio .rt-ico.online{background:rgba(64,124,170,.12);color:#3f7caa}
+.type-radio .rt-ico.offline{background:rgba(31,111,92,.1);color:var(--green)}
+.type-radio .rt-ico svg{width:19px;height:19px}
+.type-radio .rt-main b{display:block;font-size:13.5px;font-weight:600}
+.type-radio .rt-main span{font-size:11.5px;color:var(--muted)}
+
+/* 课时编辑器 */
+.lesson-editor{margin-top:2px}
+.lesson-editor .le-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.lesson-editor .le-head b{font-size:13.5px;font-weight:600;color:var(--green-ink)}
+.lesson-editor .le-head span{font-size:12px;color:var(--muted)}
+.lesson-row{
+  display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid var(--line);
+  border-radius:12px;margin-bottom:10px;background:#fcfbf8;
+}
+.lesson-row .lr-no{width:26px;height:26px;border-radius:8px;background:rgba(31,111,92,.1);color:var(--green);
+  display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:7px}
+.lesson-row .lr-fields{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lesson-row .lr-fields .f-title{grid-column:1/-1}
+.lesson-row .lr-fields.three{grid-template-columns:1fr 1fr 1fr}
+.lesson-row input{min-height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;
+  padding:0 10px;font-size:12.5px;font-family:var(--font);color:var(--ink);outline:none;width:100%}
+.lesson-row input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,111,92,.08)}
+.lesson-del{width:32px;height:32px;border-radius:8px;border:none;background:#f1ede4;color:var(--muted);
+  cursor:pointer;font-size:14px;flex-shrink:0;margin-top:4px;transition:all .2s}
+.lesson-del:hover{background:#f3dcd3;color:#d4694e}
+.add-lesson-btn{width:100%;height:40px;border:1.5px dashed #c9c2b2;border-radius:10px;background:none;
+  color:var(--green);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .2s}
+.add-lesson-btn:hover{border-color:var(--green);background:rgba(31,111,92,.04)}
+
+/* 课时单价 + 上传视频 */
+.video-upload{display:flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:1.5px dashed #c9c2b2;border-radius:9px;cursor:pointer;color:var(--green);font-size:12.5px;font-weight:600;transition:all .2s;white-space:nowrap;background:#fff}
+.video-upload:hover{border-color:var(--green);background:rgba(31,111,92,.04)}
+.video-upload input{display:none}
+.video-upload svg{width:16px;height:16px;flex-shrink:0}
+.video-upload.done{border-style:solid;border-color:var(--green);color:var(--green-deep);background:rgba(31,111,92,.06)}
+.lesson-total{font-size:13px;color:var(--muted)}
+.lesson-total b{color:var(--green-deep);font-weight:700;font-size:15px}
+
+/* 课程封面占位 */
+.course-cover{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;
+  font-family:var(--font-serif);font-size:18px;font-weight:700;color:#fff;overflow:hidden}
+.course-cover.online{background:linear-gradient(135deg,#4c8cb5,#3f7caa)}
+.course-cover.offline{background:linear-gradient(135deg,#2f8f72,#1f6f5c)}
+.course-cell{display:flex;align-items:center;gap:11px}
+.course-cell .cc-main b{display:block;font-size:13.5px;font-weight:600}
+.course-cell .cc-main span{font-size:11.5px;color:var(--muted)}
+
+/* 课时时间线（详情） */
+.lesson-timeline{display:flex;flex-direction:column}
+.lesson-tl-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #f1ede4}
+.lesson-tl-item:last-child{border-bottom:none}
+.tl-ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.tl-ico.online{background:rgba(64,124,170,.12);color:#3f7caa}
+.tl-ico.offline{background:rgba(31,111,92,.1);color:var(--green)}
+.tl-ico svg{width:16px;height:16px}
+.tl-main{flex:1;min-width:0}
+.tl-main b{font-size:13.5px;font-weight:600;display:block}
+.tl-main span{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+.tl-side{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+.tl-side b{display:block;font-size:13px;color:var(--ink);font-weight:600}
+.tl-title{display:flex;align-items:center;gap:8px}
+.play-btn{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 10px;border-radius:6px;border:1px solid var(--green);background:rgba(31,111,92,.08);color:var(--green);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .2s;white-space:nowrap}
+.play-btn:hover{background:var(--green);color:#fff}
+.play-btn svg{width:12px;height:12px}
+
+.progress-dot{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
+.progress-dot i{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
+
+/* 打卡照片占位 */
+.checkin-photo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:76px;height:56px;border-radius:8px;background:linear-gradient(135deg,#f0ece0,#ddd6c7);color:var(--muted);font-size:11px;flex-shrink:0}
+.checkin-photo svg{width:18px;height:18px}
+
+/* Toast 轻提示 */
+.toast-wrap{position:fixed;top:84px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+.toast{background:rgba(20,37,31,.92);color:#fff;font-size:13px;padding:10px 18px;border-radius:10px;
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;animation:toastIn .25s ease}
+.toast svg{width:16px;height:16px;flex-shrink:0;color:#5ec48f}
+.toast.warn svg{color:var(--gold)}
+@keyframes toastIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* ============ 需求文档模块 ============ */
+.doc-toggle{
+  position:fixed;right:20px;bottom:20px;z-index:150;
+  height:44px;padding:0 16px;border-radius:22px;
+  background:rgba(255,255,255,.88);border:1px solid var(--line);
+  color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 16px -4px rgba(0,0,0,.14);
+  transition:all .2s;font-family:var(--font);backdrop-filter:blur(6px);
+}
+.doc-toggle:hover{color:var(--ink);border-color:#c9c2b2;box-shadow:0 6px 20px -4px rgba(0,0,0,.18)}
+.doc-toggle svg{width:16px;height:16px}
+.doc-toggle:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+.doc-mask{position:fixed;inset:0;background:rgba(12,24,19,.35);z-index:158;opacity:0;pointer-events:none;transition:opacity .25s}
+.doc-mask.show{opacity:1;pointer-events:auto}
+
+.doc-drawer{
+  position:fixed;top:0;right:0;height:100vh;width:560px;max-width:92vw;z-index:159;
+  background:#fff;box-shadow:-20px 0 60px -20px rgba(0,0,0,.3);
+  transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;
+}
+.doc-drawer.open{transform:translateX(0)}
+.doc-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);flex-shrink:0}
+.doc-head h3{font-family:var(--font-serif);font-size:17px;font-weight:700}
+.doc-head-actions{display:flex;align-items:center;gap:8px}
+.doc-copy{height:30px;padding:0 12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .2s}
+.doc-copy:hover{border-color:var(--green);color:var(--green);background:rgba(31,111,92,.05)}
+.doc-close{width:32px;height:32px;border-radius:8px;border:none;background:#f1ede4;color:var(--muted);cursor:pointer;font-size:14px;line-height:1}
+.doc-close:hover{background:#e6dfd2;color:var(--ink)}
+.doc-body{flex:1;overflow-y:auto;padding:20px 22px;font-size:13px;line-height:1.75;color:#4a4d47}
+.doc-body h4{font-size:14px;font-weight:700;color:var(--green-ink);margin:22px 0 10px;padding-left:10px;border-left:3px solid var(--green)}
+.doc-body h4:first-child{margin-top:0}
+.doc-body table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+.doc-body th,.doc-body td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;line-height:1.6}
+.doc-body th{background:#faf8f3;font-weight:600;color:var(--ink);white-space:nowrap}
+.doc-body ul{margin:6px 0 6px 18px}
+.doc-body li{margin:4px 0}
+.doc-body .doc-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(216,154,78,.15);color:#b07a2c;margin-right:6px}
+.doc-body .doc-note{background:#faf8f3;border-left:3px solid var(--gold);padding:10px 14px;border-radius:6px;margin:10px 0;color:#6b6f68}
+
+@media (prefers-reduced-motion: reduce){
+  .doc-drawer,.doc-mask,.doc-toggle{transition:none}
+}
 </style>
 </head>
 <body>
@@ -463,7 +629,7 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
 
     <nav class="nav" id="nav">
       <div class="nav-label">业务管理</div>
-      <div class="nav-group open" data-group>
+      <div class="nav-group open" data-group="service">
         <button class="nav-parent" data-toggle>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 4.5-3.2 7.2-8 8-4.8-.8-8-3.5-8-8V7z"/><path d="M9 12l2 2 4-4"/></svg>
           <span>养老服务</span>
@@ -489,6 +655,48 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
           <div class="nav-item" data-page="canteen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 8 0 1 1-16 0z"/><path d="M7.5 12a4.5 4.5 0 0 0 9 0"/></svg>
             <span>银龄餐厅</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-label">老年教育</div>
+      <div class="nav-group" data-group="university">
+        <button class="nav-parent" data-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+          <span>老年大学</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="nav-children">
+          <div class="nav-item" data-page="course-list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>课程列表</span>
+          </div>
+          <div class="nav-item" data-page="course-review">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>课程审核</span>
+          </div>
+          <div class="nav-item" data-page="order" data-scope="platform">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>课程订单</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-label">机构端</div>
+      <div class="nav-group" data-group="org">
+        <button class="nav-parent" data-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-3 7 3v16"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg>
+          <span>机构工作台</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="nav-children">
+          <div class="nav-item" data-page="course-manage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+            <span>课程管理</span>
+          </div>
+          <div class="nav-item" data-page="order" data-scope="org">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>课程订单</span>
           </div>
         </div>
       </div>
@@ -873,6 +1081,320 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
           </div>
         </div>
       </section>
+
+      <!-- ===== 老年大学 · 课程列表（平台视角） ===== -->
+      <section class="page" id="page-course-list">
+        <div class="page-head">
+          <h1>课程列表</h1>
+          <p>查看系统内所有机构上传的老年大学课程，支持按课程类型、所属机构、课程名称与上架状态筛选。</p>
+        </div>
+
+        <!-- 课程类型 tab -->
+        <div class="tabs" id="cl-tabs" style="margin-bottom:18px">
+          <button class="tab active" data-cl-tab="all">全部</button>
+          <button class="tab" data-cl-tab="online">线上视频</button>
+          <button class="tab" data-cl-tab="offline">线下课程</button>
+        </div>
+
+        <!-- 筛选区 -->
+        <div class="card filter-bar">
+          <div class="f-item">
+            <label>课程名称</label>
+            <div class="search-box" style="width:220px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <input type="text" id="cl-name" placeholder="输入课程名称搜索">
+            </div>
+          </div>
+          <div class="f-item">
+            <label>所属机构</label>
+            <select id="cl-institution" style="width:190px">
+              <option value="">全部机构</option>
+            </select>
+          </div>
+          <div class="f-item">
+            <label>上架状态</label>
+            <select id="cl-status" style="width:150px">
+              <option value="">全部状态</option>
+              <option value="published">已上架</option>
+              <option value="off">已下架</option>
+            </select>
+          </div>
+          <div class="f-item" id="cl-cstatus-item" style="display:none">
+            <label>课程状态</label>
+            <select id="cl-cstatus" style="width:150px">
+              <option value="">全部状态</option>
+              <option value="报名中">报名中</option>
+              <option value="进行中">进行中</option>
+              <option value="已结课">已结课</option>
+            </select>
+          </div>
+          <div class="f-actions">
+            <button class="btn btn-primary" id="cl-search">查询</button>
+            <button class="btn btn-ghost" id="cl-reset">重置</button>
+          </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="card table-card" style="margin-top:18px">
+          <div class="table-toolbar">
+            <h3>全部课程</h3>
+            <span class="count" id="cl-count">共 0 门课程</span>
+          </div>
+          <div class="table-scroll">
+            <table style="min-width:1120px">
+              <thead>
+                <tr>
+                  <th>课程名称</th>
+                  <th>所属机构</th>
+                  <th>课程价格</th>
+                  <th>课时数</th>
+                  <th>报名人数</th>
+                  <th>上架状态</th>
+                  <th>课程状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="cl-body"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span class="page-info" id="cl-page-info"></span>
+            <div class="page-btns" id="cl-page-btns"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 老年大学 · 课程审核（平台） ===== -->
+      <section class="page" id="page-course-review">
+        <div class="page-head">
+          <h1>课程审核</h1>
+          <p>审核机构提交的课程，审核通过后课程将上架并进入课程列表。</p>
+        </div>
+
+        <!-- 筛选区 -->
+        <div class="card filter-bar">
+          <div class="f-item">
+            <label>课程名称</label>
+            <div class="search-box" style="width:220px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <input type="text" id="rv-name" placeholder="输入课程名称搜索">
+            </div>
+          </div>
+          <div class="f-item">
+            <label>所属机构</label>
+            <select id="rv-institution" style="width:190px">
+              <option value="">全部机构</option>
+            </select>
+          </div>
+          <div class="f-item">
+            <label>课程类型</label>
+            <select id="rv-type" style="width:150px">
+              <option value="">全部类型</option>
+              <option value="online">线上视频</option>
+              <option value="offline">线下课程</option>
+            </select>
+          </div>
+          <div class="f-actions">
+            <button class="btn btn-primary" id="rv-search">查询</button>
+            <button class="btn btn-ghost" id="rv-reset">重置</button>
+          </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="card table-card" style="margin-top:18px">
+          <div class="table-toolbar">
+            <h3>待审核课程</h3>
+            <span class="count" id="rv-count">共 0 门课程</span>
+          </div>
+          <div class="table-scroll">
+            <table style="min-width:1080px">
+              <thead>
+                <tr>
+                  <th>课程名称</th>
+                  <th>所属机构</th>
+                  <th>课程类型</th>
+                  <th>课程价格</th>
+                  <th>课时数</th>
+                  <th>提交时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="rv-body"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span class="page-info" id="rv-page-info"></span>
+            <div class="page-btns" id="rv-page-btns"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 课程订单（平台/机构共用） ===== -->
+      <section class="page" id="page-order">
+        <div class="page-head">
+          <h1>课程订单</h1>
+          <p id="od-desc">查看课程订单与退款记录。</p>
+        </div>
+
+        <!-- 数据范围 -->
+        <div class="card org-bar">
+          <span class="org-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span id="od-scope-label">数据范围</span>
+          </span>
+          <select id="od-institution" style="display:none">
+            <option value="">全部机构</option>
+          </select>
+          <span class="org-tip" id="od-scope-tip" style="margin-left:0"></span>
+        </div>
+
+        <!-- 订单状态 tab -->
+        <div class="tabs" id="od-tabs" style="margin-bottom:18px">
+          <button class="tab active" data-od-tab="all">全部<span class="tab-count" id="odt-all">0</span></button>
+          <button class="tab" data-od-tab="normal">正常<span class="tab-count" id="odt-normal">0</span></button>
+          <button class="tab" data-od-tab="refunding">退款申请中<span class="tab-count" id="odt-refunding">0</span></button>
+          <button class="tab" data-od-tab="refunded">已退款<span class="tab-count" id="odt-refunded">0</span></button>
+          <button class="tab" data-od-tab="refundRejected">退款驳回<span class="tab-count" id="odt-refundRejected">0</span></button>
+        </div>
+
+        <!-- 筛选区 -->
+        <div class="card filter-bar">
+          <div class="f-item">
+            <label>订单号 / 用户</label>
+            <div class="search-box" style="width:230px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <input type="text" id="od-keyword" placeholder="订单号 / 昵称 / 手机号">
+            </div>
+          </div>
+          <div class="f-item">
+            <label>课程类型</label>
+            <select id="od-type" style="width:150px">
+              <option value="">全部类型</option>
+              <option value="online">线上视频</option>
+              <option value="offline">线下课程</option>
+            </select>
+          </div>
+          <div class="f-actions">
+            <button class="btn btn-primary" id="od-search">查询</button>
+            <button class="btn btn-ghost" id="od-reset">重置</button>
+          </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="card table-card" style="margin-top:18px">
+          <div class="table-toolbar">
+            <h3>订单列表</h3>
+            <span class="count" id="od-count">共 0 笔订单</span>
+          </div>
+          <div class="table-scroll">
+            <table style="min-width:1200px">
+              <thead>
+                <tr>
+                  <th>订单号</th>
+                  <th>用户昵称</th>
+                  <th>手机号码</th>
+                  <th>课程名称</th>
+                  <th>课程类型</th>
+                  <th>所属机构</th>
+                  <th>支付金额</th>
+                  <th>下单时间</th>
+                  <th>订单状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="od-body"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span class="page-info" id="od-page-info"></span>
+            <div class="page-btns" id="od-page-btns"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 老年大学 · 课程管理 ===== -->
+      <section class="page" id="page-course-manage">
+        <div class="page-head">
+          <h1>课程管理</h1>
+          <p>为当前机构上传、编辑课程，管理课程上下架，并查看课程报名用户列表。</p>
+        </div>
+
+        <!-- 机构切换 + 新增 -->
+        <div class="card org-bar">
+          <span class="org-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-3 7 3v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+            当前机构
+          </span>
+          <select id="cm-org" disabled></select>
+          <span class="org-tip" style="margin-left:0"><span class="dot"></span>机构账号已锁定，仅管理本机构课程</span>
+          <button class="btn btn-primary" id="cm-add" style="margin-left:auto">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            新增课程
+          </button>
+        </div>
+
+        <!-- 课程类型 tab -->
+        <div class="tabs" id="cm-tabs" style="margin-bottom:18px">
+          <button class="tab active" data-cm-tab="all">全部<span class="tab-count" id="cmt-all">0</span></button>
+          <button class="tab" data-cm-tab="draft">草稿<span class="tab-count" id="cmt-draft">0</span></button>
+          <button class="tab" data-cm-tab="pending">待审核<span class="tab-count" id="cmt-pending">0</span></button>
+          <button class="tab" data-cm-tab="published">已上架<span class="tab-count" id="cmt-published">0</span></button>
+          <button class="tab" data-cm-tab="rejected">已驳回<span class="tab-count" id="cmt-rejected">0</span></button>
+          <button class="tab" data-cm-tab="off">已下架<span class="tab-count" id="cmt-off">0</span></button>
+        </div>
+
+        <!-- 筛选区 -->
+        <div class="card filter-bar">
+          <div class="f-item">
+            <label>课程名称</label>
+            <div class="search-box" style="width:220px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <input type="text" id="cm-name" placeholder="输入课程名称搜索">
+            </div>
+          </div>
+          <div class="f-item">
+            <label>课程类型</label>
+            <select id="cm-type" style="width:150px">
+              <option value="">全部类型</option>
+              <option value="online">线上视频</option>
+              <option value="offline">线下课程</option>
+            </select>
+          </div>
+          <div class="f-actions">
+            <button class="btn btn-primary" id="cm-search">查询</button>
+            <button class="btn btn-ghost" id="cm-reset">重置</button>
+          </div>
+        </div>
+
+        <!-- 列表区 -->
+        <div class="card table-card" style="margin-top:18px">
+          <div class="table-toolbar">
+            <h3>本机构课程</h3>
+            <span class="count" id="cm-count">共 0 门课程</span>
+          </div>
+          <div class="table-scroll">
+            <table style="min-width:1240px">
+              <thead>
+                <tr>
+                  <th>课程名称</th>
+                  <th>课程类型</th>
+                  <th>课程价格</th>
+                  <th>课时数</th>
+                  <th>报名人数</th>
+                  <th>审核状态</th>
+                  <th>课程状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="cm-body"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span class="page-info" id="cm-page-info"></span>
+            <div class="page-btns" id="cm-page-btns"></div>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </div>
@@ -1011,42 +1533,720 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
   </div>
 </div>
 
+<!-- 课程详情弹窗 -->
+<div class="modal-mask" id="course-detail-modal">
+  <div class="modal modal-lg">
+    <div class="modal-head">
+      <div class="modal-title-wrap">
+        <h3 id="cd-name">课程名称</h3>
+        <span class="sub" id="cd-sub">类型 · 机构</span>
+      </div>
+      <button class="modal-close" id="cd-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="info-card block-card">
+        <div class="info-card-head">基础信息</div>
+        <div class="info-grid four">
+          <div class="info-item"><label>课程类型</label><b id="cd-type">--</b></div>
+          <div class="info-item"><label>所属机构</label><b id="cd-institution">--</b></div>
+          <div class="info-item"><label>课程价格</label><b id="cd-price">--</b></div>
+          <div class="info-item"><label>课时数</label><b id="cd-lessons-count">--</b></div>
+          <div class="info-item"><label>报名人数</label><b id="cd-enroll">--</b></div>
+          <div class="info-item"><label>上架状态</label><b id="cd-status">--</b></div>
+          <div class="info-item"><label>课程状态</label><b id="cd-phase">--</b></div>
+          <div class="info-item"><label>招生人数</label><b id="cd-capacity">--</b></div>
+        </div>
+      </div>
+
+      <div class="info-card block-card" id="cd-offline-info" style="display:none">
+        <div class="info-card-head">线下课程信息</div>
+        <div class="info-grid">
+          <div class="info-item"><label>联系电话</label><b id="cd-contact">--</b></div>
+          <div class="info-item"><label>上课地点</label><b id="cd-location">--</b></div>
+          <div class="info-item"><label>报名时间</label><b id="cd-signup">--</b></div>
+          <div class="info-item"><label>课程时间</label><b id="cd-course-time">--</b></div>
+        </div>
+      </div>
+
+      <div class="info-card block-card">
+        <div class="info-card-head">课程简介</div>
+        <div class="block-body" id="cd-intro"></div>
+      </div>
+
+      <div class="info-card block-card">
+        <div class="info-card-head" id="cd-lessons-head">课时安排</div>
+        <div class="block-body" id="cd-lessons"></div>
+      </div>
+
+      <div class="info-card block-card">
+        <div class="info-card-head" style="display:flex;align-items:center;justify-content:space-between">
+          <span>报名用户</span>
+          <button class="btn-outline" id="cd-enroll-more" style="height:30px">查看全部报名用户</button>
+        </div>
+        <table class="sub-table">
+          <thead><tr><th>用户昵称</th><th>手机号码</th><th>报名时间</th><th id="cd-enroll-th">学习状态</th><th id="cd-checkin-th" style="display:none">操作</th></tr></thead>
+          <tbody id="cd-enroll-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="cd-cancel">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 报名用户列表弹窗 -->
+<div class="modal-mask" id="enroll-modal">
+  <div class="modal modal-lg">
+    <div class="modal-head">
+      <div class="modal-title-wrap">
+        <h3>报名用户</h3>
+        <span class="sub" id="em-sub">课程名称</span>
+      </div>
+      <button class="modal-close" id="em-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <table class="sub-table">
+        <thead><tr><th>用户昵称</th><th>手机号码</th><th>报名时间</th><th id="em-th">学习状态</th><th id="em-checkin-th" style="display:none">操作</th></tr></thead>
+        <tbody id="em-body"></tbody>
+      </table>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="em-cancel">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 打卡详情弹窗 -->
+<div class="modal-mask" id="checkin-detail-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>打卡详情</h3></div>
+      <button class="modal-close" id="ck-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-insti">
+        <div class="mi-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </div>
+        <div><b id="ck-name">用户昵称</b><span id="ck-sub">课程 · 手机号</span></div>
+      </div>
+      <div class="info-card block-card">
+        <div class="info-card-head">打卡记录</div>
+        <div id="ck-list"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="ck-cancel">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 强制下架弹窗 -->
+<div class="modal-mask" id="force-off-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>强制下架（打回重新审核）</h3></div>
+      <button class="modal-close" id="fo-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-insti">
+        <div class="mi-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </div>
+        <div><b id="fo-name">课程名称</b><span id="fo-sub">所属机构</span></div>
+      </div>
+      <div class="form-item">
+        <label>打回原因<span class="req">*</span></label>
+        <textarea id="fo-reason" placeholder="请填写打回原因，课程将退回机构重新提交审核"></textarea>
+      </div>
+      <div class="modal-tip">打回后，课程将退回机构端，机构可查看原因并修改后重新提交审核。</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="fo-cancel">取消</button>
+      <button class="btn btn-primary" id="fo-confirm">确认打回</button>
+    </div>
+  </div>
+</div>
+
+<!-- 审核驳回弹窗 -->
+<div class="modal-mask" id="reject-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>审核驳回</h3></div>
+      <button class="modal-close" id="rj-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-insti">
+        <div class="mi-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </div>
+        <div><b id="rj-name">课程名称</b><span id="rj-sub">所属机构</span></div>
+      </div>
+      <div class="form-item">
+        <label>驳回原因<span class="req">*</span></label>
+        <textarea id="rj-reason" placeholder="请填写驳回原因，将退回机构修改"></textarea>
+      </div>
+      <div class="modal-tip">驳回后，课程将退回机构端，机构可查看原因并修改后重新提交审核。</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="rj-cancel">取消</button>
+      <button class="btn btn-primary" id="rj-confirm">确认驳回</button>
+    </div>
+  </div>
+</div>
+
+<!-- 审核信息弹窗 -->
+<div class="modal-mask" id="review-info-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>审核信息</h3></div>
+      <button class="modal-close" id="ri-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-insti">
+        <div class="mi-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div><b id="ri-name">课程名称</b><span id="ri-sub">所属机构</span></div>
+      </div>
+      <div class="info-card block-card">
+        <div class="info-card-head">审核信息</div>
+        <div class="info-grid">
+          <div class="info-item"><label>审核状态</label><b id="ri-status">--</b></div>
+          <div class="info-item"><label>审核人</label><b id="ri-reviewer">--</b></div>
+          <div class="info-item"><label>审核时间</label><b id="ri-time">--</b></div>
+        </div>
+      </div>
+      <div class="info-card block-card">
+        <div class="info-card-head">原因</div>
+        <div class="block-body" id="ri-reason"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="ri-cancel">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 订单详情弹窗 -->
+<div class="modal-mask" id="order-detail-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>订单详情</h3></div>
+      <button class="modal-close" id="ord-close">✕</button>
+    </div>
+    <div class="modal-body" id="ord-detail-body"></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="ord-cancel">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 退款审核弹窗 -->
+<div class="modal-mask" id="refund-review-modal">
+  <div class="modal modal-md">
+    <div class="modal-head">
+      <div class="modal-title-wrap"><h3>退款审核</h3></div>
+      <button class="modal-close" id="rr-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-insti">
+        <div class="mi-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-7-7 19-2-8-8-2z"/><path d="M12 12l8-8"/></svg>
+        </div>
+        <div><b id="rr-name">订单号</b><span id="rr-sub">课程 · 用户</span></div>
+      </div>
+      <div class="info-card block-card">
+        <div class="info-card-head">退款信息</div>
+        <div class="info-grid" id="rr-info"></div>
+      </div>
+      <div class="form-item">
+        <label>驳回原因（驳回退款时填写）</label>
+        <textarea id="rr-reason" placeholder="审核通过无需填写"></textarea>
+      </div>
+      <div class="modal-tip">线下课程且无打卡记录方可退款；线上课程订单不支持退款。</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="rr-cancel">取消</button>
+      <button class="btn btn-ghost" id="rr-reject" style="color:#d4694e;border-color:#d4694e">驳回退款</button>
+      <button class="btn btn-primary" id="rr-approve">通过退款</button>
+    </div>
+  </div>
+</div>
+
+<!-- 新增/编辑课程弹窗 -->
+<div class="modal-mask" id="course-form-modal">
+  <div class="modal modal-lg">
+    <div class="modal-head">
+      <div class="modal-title-wrap">
+        <h3 id="cform-title">新增课程</h3>
+        <span class="sub" id="cform-sub">填写课程信息并上传课时内容</span>
+      </div>
+      <button class="modal-close" id="cform-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-item full">
+          <label>课程类型<span class="req">*</span></label>
+          <div class="type-radio">
+            <label id="rt-online" class="checked">
+              <input type="radio" name="cform-type" value="online" checked>
+              <span class="rt-ico online">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2.5"/><path d="M22 8l-6 3 6 3z"/></svg>
+              </span>
+              <span class="rt-main"><b>线上视频课程</b><span>报名支付后解锁全部视频课时</span></span>
+            </label>
+            <label id="rt-offline">
+              <input type="radio" name="cform-type" value="offline">
+              <span class="rt-ico offline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              </span>
+              <span class="rt-main"><b>线下课程</b><span>每节课含日期时间，线下定位打卡</span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label>课程名称<span class="req">*</span></label>
+          <input type="text" id="cform-name" placeholder="例如：智能手机使用入门">
+        </div>
+        <div class="form-item">
+          <label>所属机构<span class="req">*</span></label>
+          <select id="cform-institution"></select>
+        </div>
+
+        <div class="form-item" id="cform-price-item">
+          <label>课程价格（元）<span class="req">*</span></label>
+          <input type="number" id="cform-price" placeholder="0 表示免费课程" min="0">
+          <span class="hint">填写 0 表示免费课程</span>
+        </div>
+
+        <div class="form-item" id="cform-contact-item" style="display:none">
+          <label>联系电话<span class="req">*</span></label>
+          <input type="text" id="cform-contact" placeholder="例如：0731-88886688">
+        </div>
+        <div class="form-item" id="cform-capacity-item" style="display:none">
+          <label>招生人数<span class="req">*</span></label>
+          <input type="number" id="cform-capacity" placeholder="例如：30" min="1">
+        </div>
+
+        <div class="form-item full" id="cform-location-item" style="display:none">
+          <label>上课地点<span class="req">*</span></label>
+          <input type="text" id="cform-location" placeholder="例如：康泰养老院 一楼书画室">
+        </div>
+
+        <div class="form-item full" id="cform-signup-item" style="display:none">
+          <label>报名时间<span class="req">*</span></label>
+          <div class="range-box">
+            <input type="datetime-local" id="cform-signup-start">
+            <span>至</span>
+            <input type="datetime-local" id="cform-signup-end">
+          </div>
+          <span class="hint">报名开始至报名截止时间（精确到时分）</span>
+        </div>
+
+        <div class="form-item full" id="cform-course-item" style="display:none">
+          <label>课程时间<span class="req">*</span></label>
+          <div class="range-box">
+            <input type="date" id="cform-course-start">
+            <span>至</span>
+            <input type="date" id="cform-course-end">
+          </div>
+          <span class="hint">课程起止日期，课时日期需在此区间内</span>
+        </div>
+
+        <div class="form-item full">
+          <label>课程简介</label>
+          <textarea id="cform-intro" placeholder="介绍课程内容、教学目标与亮点…"></textarea>
+        </div>
+
+        <div class="form-item full">
+          <label>课时内容<span class="req">*</span></label>
+          <div class="lesson-editor" id="cform-lessons"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="cform-cancel">取消</button>
+      <button class="btn btn-ghost" id="cform-draft">保存草稿</button>
+      <button class="btn btn-primary" id="cform-submit">提交审核</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast 容器 -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- 需求文档开关 + 抽屉 -->
+<button class="doc-toggle" id="doc-toggle" aria-label="打开需求文档">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+  需求文档
+</button>
+<div class="doc-mask" id="doc-mask"></div>
+<aside class="doc-drawer" id="doc-drawer" aria-label="需求文档抽屉">
+  <div class="doc-head">
+    <h3 id="doc-title">需求文档</h3>
+    <div class="doc-head-actions">
+      <button class="doc-copy" id="doc-copy-md" title="复制为 Markdown">复制 Markdown</button>
+      <button class="doc-copy" id="doc-copy-rich" title="复制为富文本">复制富文本</button>
+      <button class="doc-close" id="doc-close">✕</button>
+    </div>
+  </div>
+  <div class="doc-body" id="doc-body"></div>
+</aside>
+
 <script>
 (function(){
   const pages = {
-    institutions: {title:'养老机构', crumb:['养老服务','养老机构']},
-    reservation: {title:'养老机构预约', crumb:['养老服务','养老机构预约']},
-    'home-service': {title:'居家上门服务', crumb:['养老服务','居家上门服务']},
-    community: {title:'社区站点服务', crumb:['养老服务','社区站点服务']},
-    canteen: {title:'银龄餐厅', crumb:['养老服务','银龄餐厅']},
+    institutions: {title:'养老机构', crumb:['养老服务','养老机构'], group:'service'},
+    reservation: {title:'养老机构预约', crumb:['养老服务','养老机构预约'], group:'service'},
+    'home-service': {title:'居家上门服务', crumb:['养老服务','居家上门服务'], group:'service'},
+    community: {title:'社区站点服务', crumb:['养老服务','社区站点服务'], group:'service'},
+    canteen: {title:'银龄餐厅', crumb:['养老服务','银龄餐厅'], group:'service'},
+    'course-list': {title:'课程列表', crumb:['老年大学','课程列表'], group:'university'},
+    'course-review': {title:'课程审核', crumb:['老年大学','课程审核'], group:'university'},
+    'course-manage': {title:'课程管理', crumb:['机构工作台','课程管理'], group:'org'},
+    'order': {title:'课程订单', crumb:['老年大学','课程订单'], group:'university'},
   };
+
+  let orderScope = 'platform';
 
   const navItems = document.querySelectorAll('.nav-item[data-page]');
   const pageEls = document.querySelectorAll('.page');
   const crumb = document.getElementById('crumb');
-  const navGroup = document.querySelector('.nav-group');
+  const navGroups = document.querySelectorAll('.nav-group');
 
   function activate(pageId){
     // 页面切换
     pageEls.forEach(p => p.classList.toggle('active', p.id === 'page-' + pageId));
-    // 菜单高亮
-    navItems.forEach(n => n.classList.toggle('active', n.dataset.page === pageId));
-    // 面包屑
-    const info = pages[pageId];
+    // 菜单高亮（订单页面按 scope 区分平台/机构菜单）
+    navItems.forEach(n => {
+      const match = n.dataset.page === pageId && (pageId !== 'order' || (n.dataset.scope || 'platform') === orderScope);
+      n.classList.toggle('active', match);
+    });
+    // 面包屑（订单页面按 scope 动态）
+    let info = pages[pageId];
+    if(pageId === 'order'){
+      info = orderScope === 'org'
+        ? {title:'课程订单', crumb:['机构工作台','课程订单'], group:'org'}
+        : {title:'课程订单', crumb:['老年大学','课程订单'], group:'university'};
+    }
     document.title = info.title + ' · 星龄通';
     crumb.innerHTML = info.crumb
       .map((c, i) => i < info.crumb.length - 1
         ? '<span>' + c + '</span><span class="sep">/</span>'
         : '<b>' + c + '</b>')
       .join('');
-    // 切到子菜单时确保父级展开
-    if(pageId !== 'home') navGroup.classList.add('open');
+    // 切到子菜单时确保对应父级展开
+    if(info.group){
+      navGroups.forEach(g => g.classList.toggle('open', g.dataset.group === info.group));
+    }
+    // 订单页面：应用数据范围并渲染
+    if(pageId === 'order'){
+      applyOrderScope();
+      renderOrders();
+    }
+    // 更新需求文档
+    renderDoc(pageId);
     // 滚动内容区回顶
     document.querySelector('.content').scrollTop = 0;
   }
 
+  // ===== 需求文档模块 =====
+  function inlineMd(text){ return text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+  function mdTable(lines){
+    const parseRow = l => l.replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
+    const header = parseRow(lines[0]);
+    const rows = lines.slice(2).map(parseRow);
+    let h = '<table><thead><tr>' + header.map(c => '<th>' + inlineMd(c) + '</th>').join('') + '</tr></thead><tbody>';
+    rows.forEach(r => { h += '<tr>' + r.map(c => '<td>' + inlineMd(c) + '</td>').join('') + '</tr>'; });
+    return h + '</tbody></table>';
+  }
+  function mdToHtml(md){
+    const lines = md.split('\n');
+    let html = '';
+    let i = 0;
+    while(i < lines.length){
+      const t = lines[i].trim();
+      if(!t){ i++; continue; }
+      if(t.startsWith('#### ')){ html += '<h4>' + inlineMd(t.slice(5)) + '</h4>'; i++; continue; }
+      if(t.startsWith('|')){
+        const tbl = [];
+        while(i < lines.length && lines[i].trim().startsWith('|')){ tbl.push(lines[i].trim()); i++; }
+        html += mdTable(tbl); continue;
+      }
+      if(t.startsWith('- ')){
+        const items = [];
+        while(i < lines.length && lines[i].trim().startsWith('- ')){ items.push(lines[i].trim().slice(2)); i++; }
+        html += '<ul>' + items.map(it => '<li>' + inlineMd(it) + '</li>').join('') + '</ul>'; continue;
+      }
+      html += '<p>' + inlineMd(t) + '</p>'; i++;
+    }
+    return html;
+  }
+
+  const DOCS = {
+    'course-list': {title:'课程列表 · 需求文档', md: `
+#### 页面概述
+
+**页面名称**：课程列表
+**核心目标**：为平台运营管理员提供全平台老年大学课程的统览与治理入口。本页集中展示系统内所有已通过审核的课程（已上架、已下架），解决「平台需要统一掌握各机构课程供给、并对违规课程及时干预」的问题——通过多维度筛选快速定位课程，并对违规课程执行「强制下架（打回重新审核）」，保障平台课程质量与合规，维护用户（老年学员）的学习体验与信任。
+
+#### 字段清单
+
+| 字段名 | 类型 | 必填/可选 | 校验规则 | 默认值 | 示例值 | 数据来源 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 课程名称 | 文本 | 必填 | 非空 | 无 | 智能手机使用入门 | 机构在课程管理中录入 |
+| 所属机构 | 枚举 | 必填 | 无 | 无 | 康泰养老院 | 机构提交课程时带入 |
+| 课程价格 | 金额 | 必填 | 非负 | 无 | 100 | 线上=各课时单价之和；线下=机构填写的课程总价 |
+| 课时数 | 数字 | 必填 | 正整数 | 无 | 4 | 机构上传课程时录入 |
+| 报名人数 | 数字 | 只读 | 非负 | 0 | 12 | 用户报名后系统实时统计 |
+| 上架状态 | 枚举 | 只读 | 无 | 无 | 已上架 | 审核流程产生 |
+| 课程状态 | 枚举 | 只读 | 无 | 无 | 报名中 | 系统按报名/课程时间与当前日期计算 |
+
+#### 数据来源
+
+- 课程数据：机构在「课程管理」页录入并提交审核，平台审核通过后进入本页展示
+- 报名人数：用户在前端报名课程后，系统实时统计并展示
+- 课程状态：系统根据课程设置的报名时间、课程时间与当前日期自动计算
+- 上架状态：由审核流程与机构上下架操作共同决定
+
+#### 功能与交互逻辑
+
+- 课程类型 tab（全部 / 线上视频 / 线下课程）：切换即按类型过滤列表；「线下」tab 下额外显示「课程状态」筛选（报名中 / 进行中 / 已结课）
+- 筛选：课程名称（模糊匹配）、所属机构、上架状态、课程状态；点击「查询」按条件过滤，点击「重置」清空筛选并回到「全部」tab
+- 查看详情：点击课程行「查看详情」，携带课程 ID 打开课程详情弹窗，展示基础信息、线下课程信息（报名/课程时间、联系电话、招生人数、上课地点）、课时与报名用户
+- 报名用户：点击「报名用户」打开报名用户列表；线下课程的报名用户行内提供「打卡详情」，点击查看该用户的打卡时间与打卡照片
+- 强制下架：已上架、已下架课程均可操作；点击弹窗填写打回原因 → 确认。成功：课程回到「待审核」，Toast 提示已打回，列表刷新；失败：打回原因为空时提示「请填写打回原因」，不改变状态
+
+#### 页面流转
+
+- 进入：侧边栏「老年教育 → 老年大学 → 课程列表」
+- 查看详情 → 课程详情弹窗（携带课程 ID）
+- 报名用户 → 报名用户弹窗（携带课程 ID）→ 打卡详情弹窗（携带课程 ID + 用户昵称）
+- 强制下架 → 强制下架弹窗（携带课程 ID），确认后课程回到待审核，本页移除该课程
+
+#### 边界与状态
+
+- 空态：筛选无结果时展示「暂无匹配课程」
+- 加载失败 / 断网：列表数据加载失败时展示提示，保留筛选条件，可重试
+- 无权限：非平台账号无此菜单入口
+- 极端数据：课程名超长时省略号截断并悬浮展示全文；价格为 0（免费课程）正常展示「免费」；报名人数为 0 正常展示
+- 分页：每页 10 条
+    `},
+    'course-review': {title:'课程审核 · 需求文档', md: `
+#### 页面概述
+
+**页面名称**：课程审核
+**核心目标**：为平台运营管理员提供机构课程上架前的把关入口。本页集中展示所有机构提交的「待审核」课程，解决「课程内容需平台审核通过后方可对用户可见」的合规诉求——审核通过则课程上架进入课程列表，审核驳回则退回机构（附原因）修改后重新提交，从而把控课程质量、降低低质或违规内容对用户与平台的风险。
+
+#### 字段清单
+
+| 字段名 | 类型 | 必填/可选 | 校验规则 | 默认值 | 示例值 | 数据来源 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 课程名称 | 文本 | 只读 | 无 | 无 | 老年智能手机安全 | 机构提交审核时带入 |
+| 所属机构 | 枚举 | 只读 | 无 | 无 | 湘江新区颐养中心 | 机构提交审核时带入 |
+| 课程类型 | 枚举 | 只读 | 无 | 无 | 线上视频 | 机构提交审核时带入 |
+| 课程价格 | 金额 | 只读 | 无 | 无 | 0 | 机构提交审核时带入 |
+| 课时数 | 数字 | 只读 | 无 | 无 | 2 | 机构提交审核时带入 |
+| 提交时间 | 日期时间 | 只读 | 无 | 无 | 2026-10-30 09:30 | 机构点「提交审核」时系统生成 |
+
+#### 数据来源
+
+- 待审核课程：机构在「课程管理」页点「提交审核」后进入本页
+- 提交时间：机构提交审核时系统自动记录
+
+#### 功能与交互逻辑
+
+- 筛选：课程名称（模糊）、所属机构、课程类型；查询 / 重置
+- 查看详情：点击「查看详情」，携带课程 ID 打开课程详情弹窗，完整查看课程内容与课时
+- 审核通过：点击「审核通过」→ 课程状态变为「已上架」并进入课程列表，记录审核人（当前登录账号）与审核时间。成功：Toast 提示已通过，本页移除该课程
+- 审核驳回：点击「审核驳回」→ 弹窗必填驳回原因 → 确认。成功：课程状态变为「已驳回」退回机构，记录审核人与时间；失败：驳回原因为空时提示「请填写驳回原因」，不改变状态
+
+#### 页面流转
+
+- 进入：侧边栏「老年教育 → 老年大学 → 课程审核」
+- 审核通过 → 课程进入课程列表（本页移除）
+- 审核驳回 → 课程进入机构端「课程管理」（已驳回状态）
+- 查看详情 → 课程详情弹窗（携带课程 ID）
+
+#### 边界与状态
+
+- 空态：暂无待审核课程时展示「暂无待审核课程」
+- 加载失败 / 断网：数据加载失败时展示提示，可重试
+- 无权限：非平台账号无此菜单入口
+- 极端数据：课程名超长时省略号截断；价格为 0（免费课程）正常展示
+- 分页：每页 10 条
+    `},
+    'order': {title:'课程订单 · 需求文档', md: `
+#### 页面概述
+
+**页面名称**：课程订单
+**核心目标**：为平台与机构两端提供课程订单与退款的统一视图。平台端可查看全平台订单用于对账与监管（仅记录、不审核退款）；机构端查看本机构订单并承接线下课程的退款审核。本页解决「订单分散、退款无统一处理入口」的问题，同时落地退款规则——线上订单不支持退款（支付即解锁视频），线下订单仅在无打卡记录时可退款，兼顾用户体验与经营规范。
+
+#### 字段清单
+
+| 字段名 | 类型 | 必填/可选 | 校验规则 | 默认值 | 示例值 | 数据来源 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 订单号 | 文本 | 只读 | 无 | 无 | DL20261015001 | 用户支付时系统生成 |
+| 用户昵称 / 手机号 | 文本 | 只读 | 无 | 无 | 星光老人 | 用户下单时带入 |
+| 课程名称 | 文本 | 只读 | 无 | 无 | 智能手机使用入门 | 用户下单时带入 |
+| 课程类型 | 枚举 | 只读 | 无 | 无 | 线上视频 | 下单课程带入 |
+| 所属机构 | 枚举 | 只读 | 无 | 无 | 康泰养老院 | 下单课程带入 |
+| 支付金额 | 金额 | 只读 | 非负 | 无 | 100 | 按课程/课时价格计算 |
+| 订单状态 | 枚举 | 只读 | 无 | 正常 | 正常 | 退款流程产生 |
+
+#### 数据来源
+
+- 订单：用户在前端购买课程、支付成功后生成
+- 数据范围：平台端可查看所有机构订单；机构端仅查看本机构订单（按当前机构过滤）
+- 退款审核人：当前登录账号名
+
+#### 功能与交互逻辑
+
+- 订单状态 tab（全部 / 正常 / 退款申请中 / 已退款 / 退款驳回）：切换即按状态过滤，tab 显示各状态数量统计
+- 筛选：订单号/昵称/手机号（模糊）、课程类型、所属机构（平台端）；查询 / 重置
+- 查看详情：点击「查看详情」，携带订单号打开订单详情弹窗，展示订单信息与退款信息（打卡记录数、退款原因、审核时间、审核人）
+- 审核退款（仅机构端，退款申请中订单）：点击「审核退款」→ 弹窗展示退款信息 → 通过 / 驳回。通过：校验打卡记录数为 0，成功则状态变为「已退款」，否则提示「已有打卡记录，无法退款」；驳回：必填驳回原因，成功则状态变为「退款驳回」，原因为空时提示并阻止提交
+- 平台端：仅展示与记录，不提供「审核退款」操作
+
+#### 页面流转
+
+- 进入：平台「老年教育 → 老年大学 → 课程订单」；机构「机构端 → 机构工作台 → 课程订单」
+- 查看详情 → 订单详情弹窗（携带订单号）
+- 审核退款 → 退款审核弹窗（携带订单号），通过/驳回后刷新列表与 tab 数量
+
+#### 边界与状态
+
+- 空态：暂无订单记录时展示「暂无订单记录」
+- 加载失败 / 断网：数据加载失败时展示提示，可重试
+- 无权限：机构端仅能查看本机构订单
+- 极端数据：金额为 0（免费课程）正常展示；课程名超长时省略号截断；订单量大时分页承载
+- 分页：每页 10 条
+    `},
+    'course-manage': {title:'课程管理 · 需求文档', md: `
+#### 页面概述
+
+**页面名称**：课程管理
+**核心目标**：为机构提供本机构课程的全生命周期管理入口。机构在本页上传、编辑课程并提交平台审核，审核通过后上架供用户报名；同时支持撤回审核、自由上下架、删除与查看报名用户/打卡详情。本页解决「机构需要自主管理课程供给、但内容需平台把关」的问题，通过审核状态 tab 与数量统计让机构一眼掌握课程状态与待办，提升运营效率。
+
+#### 字段清单
+
+| 字段名 | 类型 | 必填/可选 | 校验规则 | 默认值 | 示例值 | 数据来源 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 课程名称 | 文本 | 必填 | 非空 | 无 | 智能手机使用入门 | 机构在新增/编辑弹窗录入 |
+| 课程类型 | 枚举 | 必填 | 线上/线下 | 线上视频 | 线上视频 | 机构在新增/编辑弹窗选择 |
+| 课程价格 | 金额 | 必填 | 非负 | 无 | 100 | 线上=课时单价之和；线下=机构填写 |
+| 课时数 / 报名人数 | 数字 | 只读 | 非负 | 无 | 4 / 12 | 机构录入 / 用户报名统计 |
+| 审核状态 | 枚举 | 只读 | 无 | 草稿 | 已上架 | 审核流程产生 |
+| 课程状态 | 枚举 | 只读 | 无 | 无 | 报名中 | 系统按报名/课程时间与当前日期计算 |
+
+#### 数据来源
+
+- 课程：本机构在新增/编辑弹窗录入；机构账号锁定，仅管理本机构课程
+- 报名人数：用户在前端报名后系统统计
+- 课程状态：系统根据报名时间、课程时间与当前日期自动计算
+
+#### 功能与交互逻辑
+
+- 审核状态 tab（全部 / 草稿 / 待审核 / 已上架 / 已驳回 / 已下架）：切换即按状态过滤，tab 显示各状态数量统计
+- 筛选：课程名称（模糊）、课程类型；查询 / 重置
+- 新增/编辑弹窗：底部「保存草稿」「提交审核」两按钮。保存草稿：状态为草稿；提交审核：状态为待审核并记录提交时间。线上课程填课程名称、课程价格（各课时单价自动求和）；线下课程额外填报名时间（精确到时分）、课程时间、联系电话、招生人数、上课地点，课时日期受课程时间区间约束。校验失败时 Toast 提示并停留在弹窗
+- 操作按状态动态：草稿/已驳回=编辑、提交审核；待审核=撤回审核（回到草稿）、查看打回原因；已驳回=查看驳回原因；已上架=下架；已下架=上架、编辑；已上架/已下架=报名用户；所有状态=删除（二次确认防误删）
+- 报名用户弹窗：线下课程报名用户行内提供「打卡详情」，点击查看打卡时间与照片
+
+#### 页面流转
+
+- 进入：侧边栏「机构端 → 机构工作台 → 课程管理」
+- 提交审核 → 平台「课程审核」；审核通过 → 已上架；审核驳回 → 已驳回（附原因）
+- 编辑/新增 → 课程表单弹窗（携带课程 ID 或空表示新增）
+- 报名用户 → 报名用户弹窗 → 打卡详情弹窗
+
+#### 边界与状态
+
+- 空态：当前机构暂无课程时展示「当前机构暂无课程，点击新增课程开始上传」
+- 加载失败 / 断网：数据加载失败时展示提示，可重试
+- 无权限：机构账号锁定，仅管理本机构课程（机构下拉不可切换）
+- 极端数据：课程名超长时省略号截断；课程价格为 0 正常展示；课时日期超出课程时间区间时阻止保存
+- 分页：每页 10 条
+    `},
+  };
+
+  let currentDocMd = '';
+  let currentDocHtml = '';
+
+  function renderDoc(pageId){
+    const doc = DOCS[pageId];
+    if(doc){
+      currentDocMd = doc.md;
+      currentDocHtml = mdToHtml(doc.md);
+      document.getElementById('doc-title').textContent = doc.title;
+      document.getElementById('doc-body').innerHTML = currentDocHtml;
+    }else{
+      currentDocMd = '';
+      currentDocHtml = '';
+      document.getElementById('doc-title').textContent = '需求文档';
+      document.getElementById('doc-body').innerHTML = '<p style="color:var(--muted);text-align:center;padding:40px 0">当前页面暂无需求文档。</p>';
+    }
+  }
+
+  async function copyMarkdown(){
+    if(!currentDocMd){ toast('当前页面暂无需求文档', true); return; }
+    try{
+      await navigator.clipboard.writeText(currentDocMd);
+      toast('已复制 Markdown');
+    }catch(e){
+      const ta = document.createElement('textarea');
+      ta.value = currentDocMd;
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); toast('已复制 Markdown'); }catch(e2){ toast('复制失败', true); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  async function copyRichText(){
+    if(!currentDocHtml){ toast('当前页面暂无需求文档', true); return; }
+    const htmlBlob = new Blob([currentDocHtml], {type:'text/html'});
+    const textBlob = new Blob([currentDocMd], {type:'text/plain'});
+    try{
+      await navigator.clipboard.write([new ClipboardItem({'text/html': htmlBlob, 'text/plain': textBlob})]);
+      toast('已复制富文本');
+    }catch(e){
+      const div = document.createElement('div');
+      div.contentEditable = 'true';
+      div.style.cssText = 'position:fixed;left:-9999px;top:0;width:640px';
+      div.innerHTML = currentDocHtml;
+      document.body.appendChild(div);
+      const range = document.createRange();
+      range.selectNodeContents(div);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try{ document.execCommand('copy'); toast('已复制富文本'); }catch(e2){ toast('复制失败', true); }
+      sel.removeAllRanges();
+      document.body.removeChild(div);
+    }
+  }
+
+  const docToggle = document.getElementById('doc-toggle');
+  const docDrawer = document.getElementById('doc-drawer');
+  const docMask = document.getElementById('doc-mask');
+  function openDoc(){ docDrawer.classList.add('open'); docMask.classList.add('show'); }
+  function closeDoc(){ docDrawer.classList.remove('open'); docMask.classList.remove('show'); }
+  docToggle.addEventListener('click', openDoc);
+  document.getElementById('doc-close').addEventListener('click', closeDoc);
+  document.getElementById('doc-copy-md').addEventListener('click', copyMarkdown);
+  document.getElementById('doc-copy-rich').addEventListener('click', copyRichText);
+  docMask.addEventListener('click', closeDoc);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDoc(); });
+
   navItems.forEach(n => {
-    n.addEventListener('click', () => activate(n.dataset.page));
+    n.addEventListener('click', () => {
+      if(n.dataset.scope) orderScope = n.dataset.scope;
+      activate(n.dataset.page);
+    });
   });
 
   // 快捷入口跳转
@@ -1055,8 +2255,9 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
   });
 
   // 父级菜单折叠
-  const toggle = navGroup.querySelector('[data-toggle]');
-  toggle.addEventListener('click', () => navGroup.classList.toggle('open'));
+  navGroups.forEach(g => {
+    g.querySelector('[data-toggle]').addEventListener('click', () => g.classList.toggle('open'));
+  });
 
   // ===== 养老机构列表 =====
   const institutions = [
@@ -1875,6 +3076,1508 @@ td.addr{max-width:230px;overflow:hidden;text-overflow:ellipsis;color:var(--muted
   });
 
   renderCanteens();
+
+  // ===== 老年大学 =====
+  const ORGS = institutions.map(i => i.name);
+  let currentOrg = ORGS[0];
+
+  const courses = [
+    {id:1, name:'智能手机使用入门', type:'online', institution:'康泰养老院', price:99, teacher:'李慧芳', suitable:'60 岁以上，希望学会智能手机基础操作的学员', status:'published',
+      intro:'从零开始认识智能手机，涵盖开关机、拨打电话、微信聊天、扫码支付、拍照录像等日常高频操作，帮助老年学员跨越数字鸿沟，安全、自信地使用智能手机。',
+      lessons:[
+        {t:'第1课 · 认识智能手机', d:'18分钟'},
+        {t:'第2课 · 拨打电话与通讯录', d:'22分钟'},
+        {t:'第3课 · 微信聊天与视频通话', d:'26分钟'},
+        {t:'第4课 · 扫码支付与安全防骗', d:'24分钟'},
+      ]},
+    {id:2, name:'书法基础班', type:'offline', institution:'康泰养老院', price:199, teacher:'王建国', suitable:'对书法感兴趣的老年学员，零基础可学', status:'published',
+      intro:'从握笔姿势与基本笔画入手，循序渐进学习楷书结构与常用字临摹，结业时完成一幅作品。课程在院内书画室进行，需线下签到打卡。',
+      lessons:[
+        {t:'第1课 · 书法入门与工具准备', date:'2026-11-02', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+        {t:'第2课 · 基本笔画练习', date:'2026-11-09', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+        {t:'第3课 · 楷书结构入门', date:'2026-11-16', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+        {t:'第4课 · 常用字临摹', date:'2026-11-23', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+        {t:'第5课 · 作品创作', date:'2026-11-30', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+        {t:'第6课 · 结业展示', date:'2026-12-07', time:'09:00-10:30', loc:'康泰养老院 一楼书画室'},
+      ]},
+    {id:3, name:'手机摄影与短视频', type:'online', institution:'湘江新区颐养中心', price:129, teacher:'陈静', suitable:'希望记录生活、分享日常的老年学员', status:'published',
+      intro:'学会用手机拍出清晰好看的照片，掌握构图、光线与简单修图，并能剪辑制作短视频，分享给家人朋友。',
+      lessons:[
+        {t:'第1课 · 手机摄影基础与构图', d:'20分钟'},
+        {t:'第2课 · 光线运用与人像拍摄', d:'24分钟'},
+        {t:'第3课 · 简单修图技巧', d:'18分钟'},
+        {t:'第4课 · 短视频拍摄入门', d:'22分钟'},
+        {t:'第5课 · 短视频剪辑与分享', d:'28分钟'},
+      ]},
+    {id:4, name:'八段锦养生操', type:'offline', institution:'湘江新区颐养中心', price:149, teacher:'张明', suitable:'适合想通过锻炼改善体质的老年学员', status:'published',
+      intro:'八段锦动作柔和缓慢，适合老年人日常锻炼。课程在院内广场进行，由专业教练带练，每节课需线下定位打卡。',
+      lessons:[
+        {t:'第1课 · 起势与两手托天理三焦', date:'2026-11-03', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第2课 · 左右开弓似射雕', date:'2026-11-05', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第3课 · 调理脾胃须单举', date:'2026-11-10', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第4课 · 五劳七伤往后瞧', date:'2026-11-12', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第5课 · 摇头摆尾去心火', date:'2026-11-17', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第6课 · 两手攀足固肾腰', date:'2026-11-19', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第7课 · 攒拳怒目增气力', date:'2026-11-24', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+        {t:'第8课 · 背后七颠百病消', date:'2026-11-26', time:'08:00-08:45', loc:'湘江新区颐养中心 院内广场'},
+      ]},
+    {id:5, name:'老年营养与健康', type:'online', institution:'枫林养老院', price:89, teacher:'赵文静', suitable:'关注饮食健康与慢病管理的老年学员', status:'published',
+      intro:'讲解老年人常见营养误区、科学膳食搭配与慢性病饮食调理，帮助学员吃出健康、远离三高。',
+      lessons:[
+        {t:'第1课 · 老年人营养需求', d:'20分钟'},
+        {t:'第2课 · 科学膳食搭配', d:'22分钟'},
+        {t:'第3课 · 慢性病饮食调理', d:'26分钟'},
+      ]},
+    {id:6, name:'声乐合唱班', type:'offline', institution:'枫林养老院', price:168, teacher:'刘芳', suitable:'喜爱唱歌、希望参与集体活动的老年学员', status:'published',
+      intro:'从发声练习到合唱排练，学习经典老歌与红歌，参与院内文艺汇演，丰富精神文化生活。',
+      lessons:[
+        {t:'第1课 · 发声练习与气息', date:'2026-11-04', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+        {t:'第2课 · 视唱与节奏训练', date:'2026-11-11', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+        {t:'第3课 · 经典老歌学唱', date:'2026-11-18', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+        {t:'第4课 · 分声部练习', date:'2026-11-25', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+        {t:'第5课 · 合唱排练', date:'2026-12-02', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+        {t:'第6课 · 汇报演出', date:'2026-12-09', time:'14:00-15:30', loc:'枫林养老院 多功能厅'},
+      ]},
+    {id:7, name:'智能手机防诈骗', type:'online', institution:'芙蓉暖心养老服务中心', price:0, teacher:'李慧芳', suitable:'所有使用智能手机的老年学员', status:'published',
+      intro:'识别常见电信网络诈骗套路，学习安全使用手机支付、保护个人信息的技巧，守好养老钱袋子。',
+      lessons:[
+        {t:'第1课 · 常见诈骗套路识别', d:'24分钟'},
+        {t:'第2课 · 安全支付与信息保护', d:'20分钟'},
+      ]},
+    {id:8, name:'国画山水初级', type:'offline', institution:'芙蓉暖心养老服务中心', price:220, teacher:'周桂兰', suitable:'零基础想学习国画的老年学员', status:'draft',
+      intro:'学习国画山水的基本笔法、墨法与构图，临摹经典小品，感受传统艺术魅力。',
+      lessons:[
+        {t:'第1课 · 笔法与墨法基础', date:'2026-12-01', time:'09:00-10:30', loc:'芙蓉暖心养老服务中心 活动室'},
+        {t:'第2课 · 山石皴法入门', date:'2026-12-08', time:'09:00-10:30', loc:'芙蓉暖心养老服务中心 活动室'},
+        {t:'第3课 · 树木画法', date:'2026-12-15', time:'09:00-10:30', loc:'芙蓉暖心养老服务中心 活动室'},
+        {t:'第4课 · 小品临摹', date:'2026-12-22', time:'09:00-10:30', loc:'芙蓉暖心养老服务中心 活动室'},
+      ]},
+    {id:9, name:'老年心理健康', type:'online', institution:'颐和老年公寓', price:69, teacher:'何静', suitable:'希望保持积极心态、调适情绪的老年学员', status:'published',
+      intro:'关注老年心理健康，学习情绪调节、睡眠改善与家庭沟通技巧，安享幸福晚年。',
+      lessons:[
+        {t:'第1课 · 认识老年心理变化', d:'22分钟'},
+        {t:'第2课 · 情绪调节方法', d:'24分钟'},
+        {t:'第3课 · 睡眠改善技巧', d:'18分钟'},
+        {t:'第4课 · 家庭沟通与社交', d:'20分钟'},
+      ]},
+    {id:10, name:'太极剑入门', type:'offline', institution:'颐和老年公寓', price:189, teacher:'孙德旺', suitable:'有太极拳基础、希望进阶学习的学员', status:'off',
+      intro:'学习太极剑基本剑法与套路，动作舒展流畅，锻炼身体协调性。',
+      lessons:[
+        {t:'第1课 · 持剑与基本剑法', date:'2026-09-11', time:'07:30-08:30', loc:'颐和老年公寓 院内空地'},
+        {t:'第2课 · 剑法组合练习', date:'2026-09-18', time:'07:30-08:30', loc:'颐和老年公寓 院内空地'},
+        {t:'第3课 · 套路前半段', date:'2026-09-25', time:'07:30-08:30', loc:'颐和老年公寓 院内空地'},
+        {t:'第4课 · 套路后半段', date:'2026-10-02', time:'07:30-08:30', loc:'颐和老年公寓 院内空地'},
+        {t:'第5课 · 全套演练', date:'2026-10-09', time:'07:30-08:30', loc:'颐和老年公寓 院内空地'},
+      ]},
+    {id:11, name:'太极拳入门', type:'offline', institution:'安康养老院', price:159, teacher:'陈广平', suitable:'零基础想学习太极拳的老年学员', status:'published',
+      intro:'从太极拳基本手型步型学起，循序渐进掌握二十四式简化太极拳，强身健体、修身养性。',
+      lessons:[
+        {t:'第1课 · 基本功与站桩', date:'2026-11-03', time:'07:30-08:30', loc:'安康养老院 院内广场'},
+        {t:'第2课 · 起势与野马分鬃', date:'2026-11-10', time:'07:30-08:30', loc:'安康养老院 院内广场'},
+        {t:'第3课 · 白鹤亮翅与搂膝拗步', date:'2026-11-17', time:'07:30-08:30', loc:'安康养老院 院内广场'},
+        {t:'第4课 · 全套演练', date:'2026-11-24', time:'07:30-08:30', loc:'安康养老院 院内广场'},
+      ]},
+    {id:12, name:'手工编织班', type:'offline', institution:'安康养老院', price:129, teacher:'王秀珍', suitable:'喜爱手工制作、希望锻炼手脑协调的学员', status:'published',
+      intro:'学习毛线编织、串珠、剪纸等手工技艺，制作实用小物件，锻炼手脑协调，增进交流乐趣。',
+      lessons:[
+        {t:'第1课 · 基础针法与起针', date:'2026-11-05', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+        {t:'第2课 · 围巾编织', date:'2026-11-12', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+        {t:'第3课 · 串珠饰品', date:'2026-11-19', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+        {t:'第4课 · 剪纸艺术', date:'2026-11-26', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+      ]},
+    {id:13, name:'戏曲欣赏与演唱', type:'offline', institution:'夕阳红养老院', price:139, teacher:'刘桂英', suitable:'喜爱戏曲、希望学习演唱的老年学员', status:'published',
+      intro:'欣赏经典戏曲选段，学习京剧、花鼓戏等剧种的唱腔与身段，丰富文化生活。',
+      lessons:[
+        {t:'第1课 · 戏曲基础知识', date:'2026-09-08', time:'14:00-15:30', loc:'夕阳红养老院 文化礼堂'},
+        {t:'第2课 · 京剧唱腔入门', date:'2026-09-15', time:'14:00-15:30', loc:'夕阳红养老院 文化礼堂'},
+        {t:'第3课 · 花鼓戏选段学唱', date:'2026-09-22', time:'14:00-15:30', loc:'夕阳红养老院 文化礼堂'},
+      ]},
+    {id:14, name:'老年理财防骗', type:'online', institution:'夕阳红养老院', price:0, teacher:'何丽华', suitable:'希望守好养老钱、防范理财陷阱的学员', status:'published',
+      intro:'讲解常见理财骗局、非法集资套路与正规理财渠道，帮助老年学员理性理财、远离诈骗。',
+      lessons:[
+        {t:'第1课 · 常见理财骗局识别', d:'22分钟'},
+        {t:'第2课 · 正规理财渠道', d:'20分钟'},
+      ]},
+    {id:15, name:'智能手机进阶', type:'online', institution:'月湖颐养中心', price:119, teacher:'李慧芳', suitable:'已掌握基础操作、希望深入学习的长者', status:'published',
+      intro:'在基础操作之上，学习手机地图导航、网上挂号、视频剪辑、生活缴费等进阶应用。',
+      lessons:[
+        {t:'第1课 · 地图导航与出行', d:'24分钟'},
+        {t:'第2课 · 网上挂号与缴费', d:'22分钟'},
+        {t:'第3课 · 短视频剪辑进阶', d:'26分钟'},
+      ]},
+    {id:16, name:'广场舞教学', type:'offline', institution:'银龄之家', price:109, teacher:'张桂花', suitable:'喜爱跳舞、希望锻炼身体的老年学员', status:'published',
+      intro:'学习广场舞基本步伐与热门舞曲，动作简单易学，既能锻炼身体又能愉悦心情。',
+      lessons:[
+        {t:'第1课 · 基本步伐教学', date:'2026-09-14', time:'18:30-19:30', loc:'银龄之家 社区广场'},
+        {t:'第2课 · 热门舞曲一', date:'2026-09-21', time:'18:30-19:30', loc:'银龄之家 社区广场'},
+        {t:'第3课 · 热门舞曲二', date:'2026-09-28', time:'18:30-19:30', loc:'银龄之家 社区广场'},
+      ]},
+    {id:17, name:'康复保健操', type:'offline', institution:'圭塘养老服务中心', price:99, teacher:'赵康复', suitable:'术后恢复或希望改善关节活动的学员', status:'published',
+      intro:'针对老年人常见关节问题设计的康复保健操，动作温和，帮助改善关节活动度与身体机能。',
+      lessons:[
+        {t:'第1课 · 颈椎肩关节康复操', date:'2026-11-03', time:'09:00-10:00', loc:'圭塘养老服务中心 康复室'},
+        {t:'第2课 · 腰腿关节保健操', date:'2026-11-10', time:'09:00-10:00', loc:'圭塘养老服务中心 康复室'},
+        {t:'第3课 · 全身拉伸放松', date:'2026-11-17', time:'09:00-10:00', loc:'圭塘养老服务中心 康复室'},
+      ]},
+    {id:18, name:'智能手机基础', type:'online', institution:'圭塘养老服务中心', price:0, teacher:'李慧芳', suitable:'从未接触智能手机的零基础长者', status:'published',
+      intro:'从开机解锁开始，学习拨打电话、收发短信、微信聊天等最基础操作，迈出数字化第一步。',
+      lessons:[
+        {t:'第1课 · 开机与基本操作', d:'18分钟'},
+        {t:'第2课 · 电话与短信', d:'20分钟'},
+        {t:'第3课 · 微信入门', d:'22分钟'},
+      ]},
+    {id:19, name:'老年瑜伽', type:'offline', institution:'幸福里养老院', price:169, teacher:'杨静怡', suitable:'希望柔韧身体、放松身心的老年学员', status:'published',
+      intro:'以温和的瑜伽体式与呼吸练习为主，帮助改善柔韧性、缓解腰背不适，放松身心。',
+      lessons:[
+        {t:'第1课 · 呼吸与基础体式', date:'2026-11-05', time:'10:00-11:00', loc:'幸福里养老院 瑜伽室'},
+        {t:'第2课 · 脊柱舒展序列', date:'2026-11-12', time:'10:00-11:00', loc:'幸福里养老院 瑜伽室'},
+        {t:'第3课 · 平衡与放松', date:'2026-11-19', time:'10:00-11:00', loc:'幸福里养老院 瑜伽室'},
+      ]},
+    {id:20, name:'养生保健讲座', type:'online', institution:'松雅湖康养中心', price:79, teacher:'钱养生', suitable:'关注四季养生与保健的老年学员', status:'published',
+      intro:'结合中医养生理念，讲解四季养生、穴位按摩与常见老年病的日常保健方法。',
+      lessons:[
+        {t:'第1课 · 四季养生总论', d:'24分钟'},
+        {t:'第2课 · 常见穴位与按摩', d:'26分钟'},
+        {t:'第3课 · 慢性病日常保健', d:'22分钟'},
+      ]},
+    {id:21, name:'象棋与围棋', type:'offline', institution:'大瑶颐养院', price:89, teacher:'吴国手', suitable:'喜爱棋类、希望以棋会友的老年学员', status:'published',
+      intro:'学习象棋与围棋的基本规则、开局与战术，在切磋对弈中锻炼思维、结交棋友。',
+      lessons:[
+        {t:'第1课 · 象棋规则与开局', date:'2026-09-09', time:'14:00-15:30', loc:'大瑶颐养院 棋牌室'},
+        {t:'第2课 · 象棋战术与残局', date:'2026-09-16', time:'14:00-15:30', loc:'大瑶颐养院 棋牌室'},
+        {t:'第3课 · 围棋入门', date:'2026-09-23', time:'14:00-15:30', loc:'大瑶颐养院 棋牌室'},
+      ]},
+    {id:22, name:'花卉园艺', type:'offline', institution:'宁乡颐养院', price:119, teacher:'孙园丁', suitable:'喜爱花草、希望亲近自然的老年学员', status:'published',
+      intro:'学习常见花卉的种植、养护与造型，亲手打理小花园，感受园艺乐趣与生命活力。',
+      lessons:[
+        {t:'第1课 · 常见花卉认识与选苗', date:'2026-11-06', time:'15:00-16:00', loc:'宁乡颐养院 园艺角'},
+        {t:'第2课 · 浇水施肥与修剪', date:'2026-11-13', time:'15:00-16:00', loc:'宁乡颐养院 园艺角'},
+        {t:'第3课 · 组合盆栽创作', date:'2026-11-20', time:'15:00-16:00', loc:'宁乡颐养院 园艺角'},
+      ]},
+    {id:23, name:'红色歌曲合唱', type:'offline', institution:'宁乡颐养院', price:99, teacher:'刘芳', suitable:'喜爱唱歌、希望参与集体活动的学员', status:'published',
+      intro:'学习经典红色歌曲与时代金曲，参与合唱排练，用歌声重温峥嵘岁月。',
+      lessons:[
+        {t:'第1课 · 发声与气息', date:'2026-11-07', time:'14:00-15:30', loc:'宁乡颐养院 多功能厅'},
+        {t:'第2课 · 红歌学唱', date:'2026-11-14', time:'14:00-15:30', loc:'宁乡颐养院 多功能厅'},
+        {t:'第3课 · 合唱排练', date:'2026-11-21', time:'14:00-15:30', loc:'宁乡颐养院 多功能厅'},
+      ]},
+    {id:24, name:'老年智能手机安全', type:'online', institution:'湘江新区颐养中心', price:0, teacher:'李慧芳', suitable:'所有使用智能手机的老年学员', status:'pending', submitTime:'2026-10-30 09:30',
+      intro:'系统讲解智能手机安全设置、防诈骗识别与隐私保护知识，帮助老年学员安全上网。',
+      lessons:[
+        {t:'第1课 · 手机安全设置', d:'20分钟'},
+        {t:'第2课 · 防诈骗识别', d:'22分钟'},
+      ]},
+    {id:25, name:'太极扇入门', type:'offline', institution:'枫林养老院', price:149, teacher:'张明', suitable:'希望学习太极扇的老年学员', status:'pending', submitTime:'2026-10-30 10:15',
+      intro:'学习太极扇基本动作与套路，动作舒展优美，锻炼身体协调性。',
+      lessons:[
+        {t:'第1课 · 持扇与基本动作', date:'2026-12-01', time:'08:00-09:00', loc:'枫林养老院 院内广场'},
+        {t:'第2课 · 扇法组合', date:'2026-12-08', time:'08:00-09:00', loc:'枫林养老院 院内广场'},
+        {t:'第3课 · 全套演练', date:'2026-12-15', time:'08:00-09:00', loc:'枫林养老院 院内广场'},
+      ]},
+    {id:26, name:'手工剪纸', type:'offline', institution:'安康养老院', price:99, teacher:'王秀珍', suitable:'喜爱手工的老年学员', status:'rejected', rejectReason:'课程图片缺失，请补充课时内容与封面',
+      intro:'学习传统剪纸技艺，制作窗花、福字等作品。',
+      lessons:[
+        {t:'第1课 · 剪纸基础', date:'2026-12-02', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+        {t:'第2课 · 窗花制作', date:'2026-12-09', time:'14:00-15:30', loc:'安康养老院 手工活动室'},
+      ]},
+  ];
+
+  // 线下课程：报名时间（精确到时分）、课程时间、联系方式（课程价格为用户填写的总价）
+  const OFFLINE_SCHEDULES = {
+    2:  {signupStart:'2026-09-26T08:00', signupEnd:'2026-10-18T18:00', courseStart:'2026-11-02', courseEnd:'2026-12-07', contactPhone:'0731-88881234', capacity:20, location:'康泰养老院 一楼书画室'},
+    4:  {signupStart:'2026-10-20T08:00', signupEnd:'2026-11-02T18:00', courseStart:'2026-11-03', courseEnd:'2026-11-26', contactPhone:'0731-88992222', capacity:30, location:'湘江新区颐养中心 院内广场'},
+    6:  {signupStart:'2026-09-28T08:00', signupEnd:'2026-10-20T18:00', courseStart:'2026-11-04', courseEnd:'2026-12-09', contactPhone:'0731-88776655', capacity:25, location:'枫林养老院 多功能厅'},
+    8:  {signupStart:'2026-11-10T08:00', signupEnd:'2026-11-25T18:00', courseStart:'2026-12-01', courseEnd:'2026-12-22', contactPhone:'0731-88667788', capacity:15, location:'芙蓉暖心养老服务中心 活动室'},
+    10: {signupStart:'2026-08-20T08:00', signupEnd:'2026-09-05T18:00', courseStart:'2026-09-11', courseEnd:'2026-10-09', contactPhone:'0731-88556677', capacity:20, location:'颐和老年公寓 院内空地'},
+    11: {signupStart:'2026-10-22T08:00', signupEnd:'2026-11-01T18:00', courseStart:'2026-11-03', courseEnd:'2026-11-24', contactPhone:'0731-88445566', capacity:25, location:'安康养老院 院内广场'},
+    12: {signupStart:'2026-10-25T08:00', signupEnd:'2026-11-04T18:00', courseStart:'2026-11-05', courseEnd:'2026-11-26', contactPhone:'0731-88445566', capacity:18, location:'安康养老院 手工活动室'},
+    13: {signupStart:'2026-08-22T08:00', signupEnd:'2026-09-02T18:00', courseStart:'2026-09-08', courseEnd:'2026-09-22', contactPhone:'0731-88334455', capacity:30, location:'夕阳红养老院 文化礼堂'},
+    16: {signupStart:'2026-08-28T08:00', signupEnd:'2026-09-10T18:00', courseStart:'2026-09-14', courseEnd:'2026-09-28', contactPhone:'0731-88223344', capacity:40, location:'银龄之家 社区广场'},
+    17: {signupStart:'2026-10-23T08:00', signupEnd:'2026-11-02T18:00', courseStart:'2026-11-03', courseEnd:'2026-11-17', contactPhone:'0731-88112233', capacity:20, location:'圭塘养老服务中心 康复室'},
+    19: {signupStart:'2026-10-26T08:00', signupEnd:'2026-11-04T18:00', courseStart:'2026-11-05', courseEnd:'2026-11-19', contactPhone:'0731-88001122', capacity:15, location:'幸福里养老院 瑜伽室'},
+    21: {signupStart:'2026-08-24T08:00', signupEnd:'2026-09-03T18:00', courseStart:'2026-09-09', courseEnd:'2026-09-23', contactPhone:'0731-88990011', capacity:25, location:'大瑶颐养院 棋牌室'},
+    22: {signupStart:'2026-10-27T08:00', signupEnd:'2026-11-05T18:00', courseStart:'2026-11-06', courseEnd:'2026-11-20', contactPhone:'0731-88889900', capacity:20, location:'宁乡颐养院 园艺角'},
+    23: {signupStart:'2026-10-28T08:00', signupEnd:'2026-11-06T18:00', courseStart:'2026-11-07', courseEnd:'2026-11-21', contactPhone:'0731-88889900', capacity:30, location:'宁乡颐养院 多功能厅'},
+    25: {signupStart:'2026-11-20T08:00', signupEnd:'2026-11-30T18:00', courseStart:'2026-12-01', courseEnd:'2026-12-15', contactPhone:'0731-88776655', capacity:25, location:'枫林养老院 院内广场'},
+    26: {signupStart:'2026-11-01T08:00', signupEnd:'2026-11-15T18:00', courseStart:'2026-12-02', courseEnd:'2026-12-09', contactPhone:'0731-88445566', capacity:20, location:'安康养老院 手工活动室'},
+  };
+  courses.forEach(c => {
+    if(c.type === 'offline' && OFFLINE_SCHEDULES[c.id]){
+      const s = OFFLINE_SCHEDULES[c.id];
+      Object.assign(c, {
+        signupStart: s.signupStart, signupEnd: s.signupEnd,
+        courseStart: s.courseStart, courseEnd: s.courseEnd,
+        contactPhone: s.contactPhone, capacity: s.capacity, location: s.location
+      });
+      // 线下课时无单价，课程价格保持 mock 总价
+      c.lessons = c.lessons.map(l => ({ t: l.t, date: l.date, time: l.time }));
+    }
+  });
+
+  // 线上课程：每个视频课时一个单价，课程总价 = 各课时单价之和（不可编辑）
+  const ONLINE_PRICES = {1:25, 3:26, 5:30, 7:0, 9:17, 14:0, 15:40, 18:0, 20:26, 24:0};
+  courses.forEach(c => {
+    if(c.type === 'online' && ONLINE_PRICES[c.id] !== undefined){
+      c.lessons = c.lessons.map(l => ({ t: l.t, d: l.d, price: ONLINE_PRICES[c.id], preview: 0 }));
+      c.price = ONLINE_PRICES[c.id] * c.lessons.length;
+    }
+  });
+
+  const enrollments = [
+    {courseId:1, nickname:'星光老人', phone:'13873123456', enrollTime:'2026-10-15 09:20', paid:true, progress:3},
+    {courseId:1, nickname:'温柔阿姨', phone:'13975134567', enrollTime:'2026-10-16 10:05', paid:true, progress:4},
+    {courseId:1, nickname:'开心果', phone:'13786145678', enrollTime:'2026-10-17 14:30', paid:false, progress:0},
+    {courseId:1, nickname:'老顽童', phone:'13687356789', enrollTime:'2026-10-18 08:45', paid:true, progress:1},
+    {courseId:2, nickname:'平安喜乐', phone:'13586267890', enrollTime:'2026-10-14 09:10', paid:true, progress:4},
+    {courseId:2, nickname:'岁月静好', phone:'15874178901', enrollTime:'2026-10-15 11:20', paid:true, progress:2},
+    {courseId:2, nickname:'云淡风轻', phone:'15074289012', enrollTime:'2026-10-16 15:40', paid:false, progress:0},
+    {courseId:3, nickname:'静水流深', phone:'13397390123', enrollTime:'2026-10-13 10:00', paid:true, progress:5},
+    {courseId:3, nickname:'开心每一天', phone:'18673101234', enrollTime:'2026-10-15 09:30', paid:true, progress:2},
+    {courseId:3, nickname:'夕阳无限好', phone:'17773212345', enrollTime:'2026-10-17 16:00', paid:false, progress:0},
+    {courseId:4, nickname:'自在飞花', phone:'18874923456', enrollTime:'2026-10-12 08:30', paid:true, progress:6},
+    {courseId:4, nickname:'淡然一笑', phone:'13974834567', enrollTime:'2026-10-14 09:50', paid:true, progress:3},
+    {courseId:4, nickname:'温暖的港湾', phone:'15173645678', enrollTime:'2026-10-16 10:20', paid:false, progress:0},
+    {courseId:5, nickname:'岁月如歌', phone:'15874956789', enrollTime:'2026-10-11 14:00', paid:true, progress:3},
+    {courseId:5, nickname:'星光老人', phone:'13873123456', enrollTime:'2026-10-13 09:00', paid:true, progress:1},
+    {courseId:6, nickname:'温柔阿姨', phone:'13975134567', enrollTime:'2026-10-10 13:30', paid:true, progress:5},
+    {courseId:6, nickname:'开心果', phone:'13786145678', enrollTime:'2026-10-12 15:00', paid:true, progress:3},
+    {courseId:6, nickname:'老顽童', phone:'13687356789', enrollTime:'2026-10-15 10:40', paid:false, progress:0},
+    {courseId:7, nickname:'平安喜乐', phone:'13586267890', enrollTime:'2026-10-16 09:20', paid:true, progress:2},
+    {courseId:7, nickname:'岁月静好', phone:'15874178901', enrollTime:'2026-10-17 10:10', paid:true, progress:1},
+    {courseId:7, nickname:'云淡风轻', phone:'15074289012', enrollTime:'2026-10-18 14:00', paid:true, progress:2},
+    {courseId:9, nickname:'静水流深', phone:'13397390123', enrollTime:'2026-10-12 11:15', paid:true, progress:2},
+    {courseId:9, nickname:'开心每一天', phone:'18673101234', enrollTime:'2026-10-14 15:30', paid:false, progress:0},
+    {courseId:11, nickname:'平安喜乐', phone:'13586267890', enrollTime:'2026-10-13 08:30', paid:true, progress:2},
+    {courseId:11, nickname:'岁月静好', phone:'15874178901', enrollTime:'2026-10-15 09:00', paid:true, progress:1},
+    {courseId:12, nickname:'温暖的港湾', phone:'15173645678', enrollTime:'2026-10-14 15:00', paid:true, progress:3},
+    {courseId:13, nickname:'云淡风轻', phone:'15074289012', enrollTime:'2026-10-12 14:30', paid:true, progress:2},
+    {courseId:13, nickname:'淡然一笑', phone:'13974834567', enrollTime:'2026-10-16 10:00', paid:false, progress:0},
+    {courseId:14, nickname:'静水流深', phone:'13397390123', enrollTime:'2026-10-17 09:20', paid:true, progress:2},
+    {courseId:15, nickname:'开心每一天', phone:'18673101234', enrollTime:'2026-10-13 16:00', paid:true, progress:1},
+    {courseId:16, nickname:'岁月如歌', phone:'15874956789', enrollTime:'2026-10-15 18:00', paid:true, progress:2},
+    {courseId:16, nickname:'自在飞花', phone:'18874923456', enrollTime:'2026-10-17 18:00', paid:false, progress:0},
+    {courseId:17, nickname:'平安喜乐', phone:'13586267890', enrollTime:'2026-10-14 09:00', paid:true, progress:1},
+    {courseId:18, nickname:'温暖的港湾', phone:'15173645678', enrollTime:'2026-10-16 09:30', paid:true, progress:3},
+    {courseId:19, nickname:'温柔阿姨', phone:'13975134567', enrollTime:'2026-10-13 10:30', paid:true, progress:2},
+    {courseId:20, nickname:'老顽童', phone:'13687356789', enrollTime:'2026-10-15 14:00', paid:true, progress:3},
+    {courseId:21, nickname:'星光老人', phone:'13873123456', enrollTime:'2026-10-12 15:30', paid:true, progress:1},
+    {courseId:22, nickname:'开心果', phone:'13786145678', enrollTime:'2026-10-16 15:00', paid:true, progress:2},
+    {courseId:23, nickname:'夕阳无限好', phone:'17773212345', enrollTime:'2026-10-14 14:00', paid:true, progress:1},
+  ];
+
+  // 课程订单（线上课程：每个视频课时一个订单，不支持退款；线下课程：整门课程一个订单，可退款）
+  const orders = [
+    {orderId:'DL20261015001', nickname:'星光老人', phone:'13873123456', courseName:'智能手机使用入门', lessonName:'整套课程（4课时）', courseType:'online', institution:'康泰养老院', orderTime:'2026-10-15 09:20', payAmount:100, payMethod:'微信', status:'normal', checkinCount:0},
+    {orderId:'DL20261016002', nickname:'温柔阿姨', phone:'13975134567', courseName:'智能手机使用入门', lessonName:'第2课 · 拨打电话与通讯录', courseType:'online', institution:'康泰养老院', orderTime:'2026-10-16 10:05', payAmount:25, payMethod:'微信', status:'normal', checkinCount:0},
+    {orderId:'DL20261015003', nickname:'开心果', phone:'13786145678', courseName:'手机摄影与短视频', lessonName:'整套课程（5课时）', courseType:'online', institution:'湘江新区颐养中心', orderTime:'2026-10-15 09:30', payAmount:130, payMethod:'微信', status:'normal', checkinCount:0},
+    {orderId:'DL20261017004', nickname:'老顽童', phone:'13687356789', courseName:'老年营养与健康', lessonName:'第2课 · 科学膳食搭配', courseType:'online', institution:'枫林养老院', orderTime:'2026-10-17 14:00', payAmount:30, payMethod:'微信', status:'normal', checkinCount:0},
+    {orderId:'DL20261018005', nickname:'平安喜乐', phone:'13586267890', courseName:'老年心理健康', lessonName:'第1课 · 认识老年心理变化', courseType:'online', institution:'颐和老年公寓', orderTime:'2026-10-18 08:40', payAmount:17, payMethod:'微信', status:'normal', checkinCount:0},
+    {orderId:'DL20261014006', nickname:'岁月静好', phone:'15874178901', courseName:'书法基础班', lessonName:'整门课程', courseType:'offline', institution:'康泰养老院', orderTime:'2026-10-14 09:10', payAmount:210, payMethod:'微信', status:'normal', checkinCount:4},
+    {orderId:'DL20261015007', nickname:'云淡风轻', phone:'15074289012', courseName:'书法基础班', lessonName:'整门课程', courseType:'offline', institution:'康泰养老院', orderTime:'2026-10-15 11:20', payAmount:210, payMethod:'线下支付', status:'refunding', checkinCount:0, refundTime:'2026-10-20 10:00', refundReason:'因身体原因无法参加课程'},
+    {orderId:'DL20261016008', nickname:'静水流深', phone:'13397390123', courseName:'八段锦养生操', lessonName:'整门课程', courseType:'offline', institution:'湘江新区颐养中心', orderTime:'2026-10-16 08:30', payAmount:200, payMethod:'微信', status:'normal', checkinCount:6},
+    {orderId:'DL20261012009', nickname:'开心每一天', phone:'18673101234', courseName:'声乐合唱班', lessonName:'整门课程', courseType:'offline', institution:'枫林养老院', orderTime:'2026-10-12 15:00', payAmount:180, payMethod:'微信', status:'refunded', checkinCount:0, refundTime:'2026-10-18 09:00', refundReason:'因家中有事无法参加', refundReviewTime:'2026-10-19 10:00', refundReviewer:'平台管理员'},
+    {orderId:'DL20261013010', nickname:'夕阳无限好', phone:'17773212345', courseName:'太极拳入门', lessonName:'整门课程', courseType:'offline', institution:'安康养老院', orderTime:'2026-10-13 10:30', payAmount:160, payMethod:'微信', status:'refundRejected', checkinCount:1, refundTime:'2026-10-19 14:00', refundReason:'临时有事想退课', refundReviewTime:'2026-10-20 09:00', refundReviewer:'平台管理员'},
+    {orderId:'DL20261015011', nickname:'自在飞花', phone:'18874923456', courseName:'手工编织班', lessonName:'整门课程', courseType:'offline', institution:'安康养老院', orderTime:'2026-10-15 14:20', payAmount:128, payMethod:'微信', status:'normal', checkinCount:3},
+    {orderId:'DL20261012012', nickname:'淡然一笑', phone:'13974834567', courseName:'戏曲欣赏与演唱', lessonName:'整门课程', courseType:'offline', institution:'夕阳红养老院', orderTime:'2026-10-12 14:30', payAmount:135, payMethod:'线下支付', status:'normal', checkinCount:2},
+    {orderId:'DL20261017013', nickname:'温暖的港湾', phone:'15173645678', courseName:'广场舞教学', lessonName:'整门课程', courseType:'offline', institution:'银龄之家', orderTime:'2026-10-17 18:00', payAmount:105, payMethod:'微信', status:'refunding', checkinCount:0, refundTime:'2026-10-21 15:00', refundReason:'搬家无法继续参加'},
+    {orderId:'DL20261014014', nickname:'岁月如歌', phone:'15874956789', courseName:'康复保健操', lessonName:'整门课程', courseType:'offline', institution:'圭塘养老服务中心', orderTime:'2026-10-14 09:00', payAmount:99, payMethod:'微信', status:'normal', checkinCount:1},
+    {orderId:'DL20261016015', nickname:'温柔阿姨', phone:'13975134567', courseName:'老年瑜伽', lessonName:'整门课程', courseType:'offline', institution:'幸福里养老院', orderTime:'2026-10-16 10:30', payAmount:165, payMethod:'微信', status:'normal', checkinCount:2},
+  ];
+
+  // ---- 工具 ----
+  const TYPE_LABELS = {online:'线上视频', offline:'线下课程'};
+  const STATUS_LABELS = {draft:'草稿', pending:'待审核', published:'已上架', rejected:'已驳回', off:'已下架'};
+  const CURRENT_USER = '平台管理员';
+  const ORDER_STATUS = {normal:'正常', refunding:'退款申请中', refunded:'已退款', refundRejected:'退款驳回'};
+
+  function typeTag(t){ return '<span class="tag ' + (t === 'online' ? 'blue' : 'green') + '">' + TYPE_LABELS[t] + '</span>'; }
+  function courseStatusTag(s){ return '<span class="tag ' + ({draft:'neutral', pending:'blue', published:'green', rejected:'gold', off:'neutral'}[s]) + '">' + STATUS_LABELS[s] + '</span>'; }
+  function orderStatusTag(s){ return '<span class="tag ' + ({normal:'green', refunding:'gold', refunded:'neutral', refundRejected:'blue'}[s]) + '">' + ORDER_STATUS[s] + '</span>'; }
+  function priceText(p){ return p === 0 ? '<span style="color:#2f9e63;font-weight:600">免费</span>' : '<span style="font-weight:600;color:var(--green-deep)">¥' + p + '</span>'; }
+  function coverHTML(c){ return '<div class="course-cover ' + c.type + '">' + c.name.charAt(0) + '</div>'; }
+  function enrollCount(cid){ return enrollments.filter(e => e.courseId === cid).length; }
+
+  // ---- 课程状态（线下课程：报名中/进行中/已结课） ----
+  function todayStr(){
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
+  function nowStr(){
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const hh = String(d.getHours()).padStart(2, '0');
+    const mm = String(d.getMinutes()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day + ' ' + hh + ':' + mm;
+  }
+  function coursePhase(c){
+    if(c.type !== 'offline') return '';
+    if(!c.signupEnd || !c.courseEnd) return '报名中';
+    const today = todayStr();
+    if(today > c.courseEnd) return '已结课';
+    if(today <= c.signupEnd) return '报名中';
+    return '进行中';
+  }
+  function coursePhaseHTML(c){
+    const p = coursePhase(c);
+    if(!p) return '<span style="color:var(--faint)">--</span>';
+    const cls = {报名中:'blue', 进行中:'green', 已结课:'neutral'}[p];
+    return '<span class="tag ' + cls + '">' + p + '</span>';
+  }
+
+  function fmtDT(v){ return v ? v.replace('T', ' ') : '--'; }
+
+  function toast(msg, warn){
+    const wrap = document.getElementById('toast-wrap');
+    const t = document.createElement('div');
+    t.className = 'toast' + (warn ? ' warn' : '');
+    const icon = warn
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+    t.innerHTML = icon + '<span>' + msg + '</span>';
+    wrap.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 2200);
+  }
+
+  // ---- 机构切换（仅课程管理页使用） ----
+  function fillOrgSelects(){
+    const opts = ORGS.map(o => '<option value="' + o + '">' + o + '</option>').join('');
+    document.getElementById('cm-org').innerHTML = opts;
+    document.getElementById('cm-org').value = currentOrg;
+    document.getElementById('cl-institution').innerHTML = '<option value="">全部机构</option>' + opts;
+    document.getElementById('rv-institution').innerHTML = '<option value="">全部机构</option>' + opts;
+  }
+  function setCurrentOrg(name){
+    currentOrg = name;
+    document.getElementById('cm-org').value = name;
+    cmPage = 1; renderCourseManage();
+  }
+  document.getElementById('cm-org').addEventListener('change', e => setCurrentOrg(e.target.value));
+
+  // ---- 报名用户行 ----
+  function enrollRowHTML(e, c){
+    const total = c.lessons.length;
+    const progress = c.type === 'online'
+      ? '<span class="progress-dot"><i></i>已学习 ' + e.progress + ' / ' + total + ' 课时</span>'
+      : '<span class="progress-dot"><i></i>已打卡 ' + e.progress + ' / ' + total + ' 次</span>';
+    const checkinBtn = c.type === 'offline'
+      ? '<button class="btn-outline" data-checkin-cid="' + c.id + '" data-checkin-name="' + e.nickname + '">打卡详情</button>'
+      : '';
+    return '<tr>' +
+      '<td><span class="inst-name">' + e.nickname + '</span></td>' +
+      '<td>' + e.phone + '</td>' +
+      '<td>' + e.enrollTime + '</td>' +
+      '<td>' + progress + '</td>' +
+      (checkinBtn ? '<td>' + checkinBtn + '</td>' : '') +
+    '</tr>';
+  }
+
+  // ---- 课程详情 ----
+  function openCourseDetail(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    const isOnline = c.type === 'online';
+    document.getElementById('cd-name').textContent = c.name;
+    document.getElementById('cd-sub').textContent = TYPE_LABELS[c.type] + ' · ' + c.institution;
+    document.getElementById('cd-type').innerHTML = typeTag(c.type);
+    document.getElementById('cd-institution').textContent = c.institution;
+    document.getElementById('cd-price').innerHTML = priceText(c.price);
+    document.getElementById('cd-lessons-count').textContent = c.lessons.length + ' 节';
+    document.getElementById('cd-enroll').textContent = enrollCount(c.id) + ' 人';
+    document.getElementById('cd-status').innerHTML = courseStatusTag(c.status);
+    document.getElementById('cd-phase').innerHTML = coursePhaseHTML(c);
+    document.getElementById('cd-capacity').textContent = (!isOnline && c.capacity) ? (c.capacity + ' 人') : '--';
+
+    document.getElementById('cd-offline-info').style.display = isOnline ? 'none' : '';
+    document.getElementById('cd-contact').textContent = c.contactPhone || '--';
+    document.getElementById('cd-location').textContent = c.location || '--';
+    document.getElementById('cd-signup').textContent = (c.signupStart && c.signupEnd) ? (fmtDT(c.signupStart) + ' 至 ' + fmtDT(c.signupEnd)) : '--';
+    document.getElementById('cd-course-time').textContent = (c.courseStart && c.courseEnd) ? (c.courseStart + ' 至 ' + c.courseEnd) : '--';
+
+    document.getElementById('cd-intro').textContent = c.intro || '暂无简介';
+
+    document.getElementById('cd-lessons-head').textContent = isOnline ? '视频课时' : '上课安排';
+    document.getElementById('cd-lessons').innerHTML = c.lessons.map(l => {
+      const ico = isOnline
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2.5"/><path d="M22 8l-6 3 6 3z"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+      let main, side;
+      if(isOnline){
+        const playBtn = '<button class="play-btn" data-play="' + l.t + '"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>播放</button>';
+        main = '<div class="tl-title"><b>' + l.t + '</b>' + playBtn + '</div><span>' + (l.video ? '已上传：' + l.video : '视频课程 · 报名支付后解锁') + '</span>';
+        side = '<b>' + (l.d || '--') + '</b><span>¥' + (l.price || 0) + (l.preview ? ' · 试看' + l.preview + '分钟' : '') + '</span>';
+      }else{
+        main = '<b>' + l.t + '</b><span>' + (c.location || '') + '</span>';
+        side = '<b>' + l.date + '</b><span>' + l.time + '</span>';
+      }
+      return '<div class="lesson-tl-item">' +
+        '<div class="tl-ico ' + (isOnline ? 'online' : 'offline') + '">' + ico + '</div>' +
+        '<div class="tl-main">' + main + '</div>' +
+        '<div class="tl-side">' + side + '</div>' +
+      '</div>';
+    }).join('');
+
+    if(isOnline){
+      document.getElementById('cd-lessons').querySelectorAll('.play-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          toast('正在播放：' + c.name + ' · ' + btn.dataset.play);
+        });
+      });
+    }
+
+    const es = enrollments.filter(e => e.courseId === c.id);
+    document.getElementById('cd-enroll-th').textContent = isOnline ? '学习状态' : '打卡状态';
+    document.getElementById('cd-checkin-th').style.display = isOnline ? 'none' : '';
+    document.getElementById('cd-enroll-body').innerHTML = es.length
+      ? es.slice(0, 5).map(e => enrollRowHTML(e, c)).join('')
+      : '<tr><td colspan="' + (isOnline ? 4 : 5) + '" class="empty-cell">暂无报名用户</td></tr>';
+    document.getElementById('cd-enroll-more').style.display = es.length > 5 ? '' : 'none';
+    document.getElementById('cd-enroll-more').onclick = () => openEnrollModal(c.id);
+    if(!isOnline){
+      document.getElementById('cd-enroll-body').querySelectorAll('[data-checkin-cid]').forEach(b => {
+        b.addEventListener('click', () => openCheckinDetail(Number(b.dataset.checkinCid), b.dataset.checkinName));
+      });
+    }
+
+    document.getElementById('course-detail-modal').classList.add('show');
+  }
+
+  function openEnrollModal(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    const isOnline = c.type === 'online';
+    document.getElementById('em-sub').textContent = c.name + ' · ' + c.institution;
+    document.getElementById('em-th').textContent = isOnline ? '学习状态' : '打卡状态';
+    document.getElementById('em-checkin-th').style.display = isOnline ? 'none' : '';
+    const es = enrollments.filter(e => e.courseId === id);
+    document.getElementById('em-body').innerHTML = es.length
+      ? es.map(e => enrollRowHTML(e, c)).join('')
+      : '<tr><td colspan="' + (isOnline ? 4 : 5) + '" class="empty-cell">暂无报名用户</td></tr>';
+    document.getElementById('enroll-modal').classList.add('show');
+    if(!isOnline){
+      document.getElementById('em-body').querySelectorAll('[data-checkin-cid]').forEach(b => {
+        b.addEventListener('click', () => openCheckinDetail(Number(b.dataset.checkinCid), b.dataset.checkinName));
+      });
+    }
+  }
+
+  function openCheckinDetail(courseId, nickname){
+    const c = courses.find(x => x.id === courseId);
+    const e = enrollments.find(x => x.courseId === courseId && x.nickname === nickname);
+    if(!c || !e) return;
+    document.getElementById('ck-name').textContent = e.nickname;
+    document.getElementById('ck-sub').textContent = c.name + ' · ' + e.phone;
+    const count = e.progress || 0;
+    const records = [];
+    for(let i = 0; i < count; i++){
+      const lesson = c.lessons[i];
+      const time = lesson ? (lesson.date + ' ' + lesson.time) : '--';
+      records.push(
+        '<div class="lesson-tl-item">' +
+          '<div class="tl-ico offline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>' +
+          '<div class="tl-main"><b>' + (lesson ? lesson.t : '第' + (i + 1) + '课') + '</b><span>打卡时间：' + time + '</span></div>' +
+          '<div class="checkin-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-4 4"/></svg><span>打卡照片</span></div>' +
+        '</div>'
+      );
+    }
+    document.getElementById('ck-list').innerHTML = records.length
+      ? records.join('')
+      : '<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">暂无打卡记录</div>';
+    document.getElementById('checkin-detail-modal').classList.add('show');
+  }
+
+  function closeCheckinDetail(){ document.getElementById('checkin-detail-modal').classList.remove('show'); }
+  document.getElementById('ck-close').addEventListener('click', closeCheckinDetail);
+  document.getElementById('ck-cancel').addEventListener('click', closeCheckinDetail);
+  document.getElementById('checkin-detail-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeCheckinDetail(); });
+
+  // ---- 课程列表 ----
+  const CL_PAGE_SIZE = 10;
+  let clPage = 1;
+  let clTab = 'all';
+
+  function getFilteredCourses(){
+    const name = document.getElementById('cl-name').value.trim();
+    const status = document.getElementById('cl-status').value;
+    const institution = document.getElementById('cl-institution').value;
+    const cstatus = document.getElementById('cl-cstatus').value;
+    return courses.filter(c => {
+      if(c.status !== 'published' && c.status !== 'off') return false;
+      if(clTab !== 'all' && c.type !== clTab) return false;
+      if(name && !c.name.includes(name)) return false;
+      if(status && c.status !== status) return false;
+      if(institution && c.institution !== institution) return false;
+      if(cstatus && c.type === 'offline' && coursePhase(c) !== cstatus) return false;
+      return true;
+    });
+  }
+
+  function renderClPager(totalPages){
+    let html = '<button class="page-btn" data-clpg="prev"' + (clPage <= 1 ? ' disabled' : '') + '>‹</button>';
+    for(let i = 1; i <= totalPages; i++){
+      html += '<button class="page-btn' + (i === clPage ? ' active' : '') + '" data-clpg="' + i + '">' + i + '</button>';
+    }
+    html += '<button class="page-btn" data-clpg="next"' + (clPage >= totalPages ? ' disabled' : '') + '>›</button>';
+    document.getElementById('cl-page-btns').innerHTML = html;
+    document.getElementById('cl-page-btns').querySelectorAll('[data-clpg]').forEach(b => {
+      b.addEventListener('click', () => {
+        const v = b.dataset.clpg;
+        if(v === 'prev') clPage = Math.max(1, clPage - 1);
+        else if(v === 'next') clPage = Math.min(totalPages, clPage + 1);
+        else clPage = parseInt(v, 10);
+        renderCourseList();
+      });
+    });
+  }
+
+  function renderCourseList(){
+    const list = getFilteredCourses();
+    const total = list.length;
+    const totalPages = Math.max(1, Math.ceil(total / CL_PAGE_SIZE));
+    if(clPage > totalPages) clPage = totalPages;
+    const start = (clPage - 1) * CL_PAGE_SIZE;
+    const pageData = list.slice(start, start + CL_PAGE_SIZE);
+
+    document.getElementById('cl-count').textContent = '共 ' + total + ' 门课程';
+    document.getElementById('cl-page-info').textContent = total ? ('第 ' + clPage + ' / ' + totalPages + ' 页 · 共 ' + total + ' 条') : '暂无数据';
+
+    if(!pageData.length){
+      document.getElementById('cl-body').innerHTML = '<tr><td colspan="8" class="empty-cell">暂无匹配课程，请调整筛选条件</td></tr>';
+    }else{
+      document.getElementById('cl-body').innerHTML = pageData.map(c =>
+        '<tr>' +
+          '<td><div class="course-cell">' + coverHTML(c) + '<div class="cc-main"><b>' + c.name + '</b></div></div></td>' +
+          '<td>' + c.institution + '</td>' +
+          '<td>' + priceText(c.price) + '</td>' +
+          '<td>' + c.lessons.length + ' 节</td>' +
+          '<td>' + enrollCount(c.id) + ' 人</td>' +
+          '<td>' + courseStatusTag(c.status) + '</td>' +
+          '<td>' + coursePhaseHTML(c) + '</td>' +
+          '<td><div style="display:flex;gap:8px">' +
+            '<button class="btn-outline" data-cl-view="' + c.id + '">查看详情</button>' +
+            '<button class="btn-outline" data-cl-enroll="' + c.id + '">报名用户</button>' +
+            ((c.status === 'published' || c.status === 'off') ? '<button class="btn-outline" data-cl-force="' + c.id + '">强制下架</button>' : '') +
+          '</div></td>' +
+        '</tr>'
+      ).join('');
+
+      document.getElementById('cl-body').querySelectorAll('[data-cl-view]').forEach(b => b.addEventListener('click', () => openCourseDetail(Number(b.dataset.clView))));
+      document.getElementById('cl-body').querySelectorAll('[data-cl-enroll]').forEach(b => b.addEventListener('click', () => openEnrollModal(Number(b.dataset.clEnroll))));
+      document.getElementById('cl-body').querySelectorAll('[data-cl-force]').forEach(b => b.addEventListener('click', () => forceOffCourse(Number(b.dataset.clForce))));
+    }
+    renderClPager(totalPages);
+  }
+
+  function applyClFilter(){ clPage = 1; renderCourseList(); }
+  document.getElementById('cl-search').addEventListener('click', applyClFilter);
+  document.getElementById('cl-reset').addEventListener('click', () => {
+    document.getElementById('cl-name').value = '';
+    document.getElementById('cl-institution').value = '';
+    document.getElementById('cl-status').value = '';
+    document.getElementById('cl-cstatus').value = '';
+    clTab = 'all';
+    document.querySelectorAll('#cl-tabs .tab').forEach(x => x.classList.toggle('active', x.dataset.clTab === 'all'));
+    document.getElementById('cl-cstatus-item').style.display = 'none';
+    applyClFilter();
+  });
+  document.getElementById('cl-name').addEventListener('keydown', e => { if(e.key === 'Enter') applyClFilter(); });
+  ['cl-institution','cl-status','cl-cstatus'].forEach(id => document.getElementById(id).addEventListener('change', applyClFilter));
+
+  // 课程类型 tab 切换
+  document.querySelectorAll('#cl-tabs .tab').forEach(t => {
+    t.addEventListener('click', () => {
+      clTab = t.dataset.clTab;
+      document.querySelectorAll('#cl-tabs .tab').forEach(x => x.classList.toggle('active', x === t));
+      document.getElementById('cl-cstatus-item').style.display = (clTab === 'offline') ? '' : 'none';
+      if(clTab !== 'offline') document.getElementById('cl-cstatus').value = '';
+      applyClFilter();
+    });
+  });
+
+  let currentForceOffId = null;
+
+  function forceOffCourse(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    currentForceOffId = id;
+    document.getElementById('fo-name').textContent = c.name;
+    document.getElementById('fo-sub').textContent = c.institution;
+    document.getElementById('fo-reason').value = '';
+    document.getElementById('force-off-modal').classList.add('show');
+  }
+
+  function confirmForceOff(){
+    const reason = document.getElementById('fo-reason').value.trim();
+    if(!reason){ toast('请填写打回原因', true); return; }
+    const c = courses.find(x => x.id === currentForceOffId);
+    if(!c) return;
+    c.status = 'pending';
+    c.rejectReason = reason;
+    c.reviewer = CURRENT_USER;
+    c.reviewTime = nowStr();
+    toast('已打回「' + c.name + '」，课程需重新提交审核');
+    document.getElementById('force-off-modal').classList.remove('show');
+    renderCourseList();
+    renderCourseManage();
+    renderCourseReview();
+  }
+
+  function closeForceOffModal(){ document.getElementById('force-off-modal').classList.remove('show'); }
+  document.getElementById('fo-close').addEventListener('click', closeForceOffModal);
+  document.getElementById('fo-cancel').addEventListener('click', closeForceOffModal);
+  document.getElementById('fo-confirm').addEventListener('click', confirmForceOff);
+  document.getElementById('force-off-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeForceOffModal(); });
+
+  // ---- 课程审核（平台） ----
+  const RV_PAGE_SIZE = 10;
+  let rvPage = 1;
+  let currentRejectId = null;
+
+  function getFilteredReviewCourses(){
+    const name = document.getElementById('rv-name').value.trim();
+    const institution = document.getElementById('rv-institution').value;
+    const type = document.getElementById('rv-type').value;
+    return courses.filter(c => {
+      if(c.status !== 'pending') return false;
+      if(name && !c.name.includes(name)) return false;
+      if(institution && c.institution !== institution) return false;
+      if(type && c.type !== type) return false;
+      return true;
+    });
+  }
+
+  function renderRvPager(totalPages){
+    let html = '<button class="page-btn" data-rvpg="prev"' + (rvPage <= 1 ? ' disabled' : '') + '>‹</button>';
+    for(let i = 1; i <= totalPages; i++){
+      html += '<button class="page-btn' + (i === rvPage ? ' active' : '') + '" data-rvpg="' + i + '">' + i + '</button>';
+    }
+    html += '<button class="page-btn" data-rvpg="next"' + (rvPage >= totalPages ? ' disabled' : '') + '>›</button>';
+    document.getElementById('rv-page-btns').innerHTML = html;
+    document.getElementById('rv-page-btns').querySelectorAll('[data-rvpg]').forEach(b => {
+      b.addEventListener('click', () => {
+        const v = b.dataset.rvpg;
+        if(v === 'prev') rvPage = Math.max(1, rvPage - 1);
+        else if(v === 'next') rvPage = Math.min(totalPages, rvPage + 1);
+        else rvPage = parseInt(v, 10);
+        renderCourseReview();
+      });
+    });
+  }
+
+  function renderCourseReview(){
+    const list = getFilteredReviewCourses();
+    const total = list.length;
+    const totalPages = Math.max(1, Math.ceil(total / RV_PAGE_SIZE));
+    if(rvPage > totalPages) rvPage = totalPages;
+    const start = (rvPage - 1) * RV_PAGE_SIZE;
+    const pageData = list.slice(start, start + RV_PAGE_SIZE);
+
+    document.getElementById('rv-count').textContent = '共 ' + total + ' 门课程';
+    document.getElementById('rv-page-info').textContent = total ? ('第 ' + rvPage + ' / ' + totalPages + ' 页 · 共 ' + total + ' 条') : '暂无数据';
+
+    if(!pageData.length){
+      document.getElementById('rv-body').innerHTML = '<tr><td colspan="7" class="empty-cell">暂无待审核课程</td></tr>';
+    }else{
+      document.getElementById('rv-body').innerHTML = pageData.map(c =>
+        '<tr>' +
+          '<td><div class="course-cell">' + coverHTML(c) + '<div class="cc-main"><b>' + c.name + '</b></div></div></td>' +
+          '<td>' + c.institution + '</td>' +
+          '<td>' + typeTag(c.type) + '</td>' +
+          '<td>' + priceText(c.price) + '</td>' +
+          '<td>' + c.lessons.length + ' 节</td>' +
+          '<td>' + (c.submitTime || '--') + '</td>' +
+          '<td><div style="display:flex;gap:8px">' +
+            '<button class="btn-outline" data-rv-view="' + c.id + '">查看详情</button>' +
+            '<button class="btn-outline" data-rv-approve="' + c.id + '">审核通过</button>' +
+            '<button class="btn-outline" data-rv-reject="' + c.id + '">审核驳回</button>' +
+          '</div></td>' +
+        '</tr>'
+      ).join('');
+
+      document.getElementById('rv-body').querySelectorAll('[data-rv-view]').forEach(b => b.addEventListener('click', () => openCourseDetail(Number(b.dataset.rvView))));
+      document.getElementById('rv-body').querySelectorAll('[data-rv-approve]').forEach(b => b.addEventListener('click', () => approveCourse(Number(b.dataset.rvApprove))));
+      document.getElementById('rv-body').querySelectorAll('[data-rv-reject]').forEach(b => b.addEventListener('click', () => openRejectModal(Number(b.dataset.rvReject))));
+    }
+    renderRvPager(totalPages);
+  }
+
+  function applyRvFilter(){ rvPage = 1; renderCourseReview(); }
+  document.getElementById('rv-search').addEventListener('click', applyRvFilter);
+  document.getElementById('rv-reset').addEventListener('click', () => {
+    document.getElementById('rv-name').value = '';
+    document.getElementById('rv-institution').value = '';
+    document.getElementById('rv-type').value = '';
+    applyRvFilter();
+  });
+  document.getElementById('rv-name').addEventListener('keydown', e => { if(e.key === 'Enter') applyRvFilter(); });
+  ['rv-institution','rv-type'].forEach(id => document.getElementById(id).addEventListener('change', applyRvFilter));
+
+  function approveCourse(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    c.status = 'published';
+    c.rejectReason = '';
+    c.reviewer = CURRENT_USER;
+    c.reviewTime = nowStr();
+    toast('已审核通过「' + c.name + '」，课程已上架');
+    renderCourseReview();
+    renderCourseList();
+    renderCourseManage();
+  }
+
+  function openRejectModal(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    currentRejectId = id;
+    document.getElementById('rj-name').textContent = c.name;
+    document.getElementById('rj-sub').textContent = c.institution;
+    document.getElementById('rj-reason').value = '';
+    document.getElementById('reject-modal').classList.add('show');
+  }
+  function confirmReject(){
+    const reason = document.getElementById('rj-reason').value.trim();
+    if(!reason){ toast('请填写驳回原因', true); return; }
+    const c = courses.find(x => x.id === currentRejectId);
+    if(!c) return;
+    c.status = 'rejected';
+    c.rejectReason = reason;
+    c.reviewer = CURRENT_USER;
+    c.reviewTime = nowStr();
+    toast('已驳回「' + c.name + '」，课程已退回机构');
+    document.getElementById('reject-modal').classList.remove('show');
+    renderCourseReview();
+    renderCourseManage();
+  }
+  function closeRejectModal(){ document.getElementById('reject-modal').classList.remove('show'); }
+  document.getElementById('rj-close').addEventListener('click', closeRejectModal);
+  document.getElementById('rj-cancel').addEventListener('click', closeRejectModal);
+  document.getElementById('rj-confirm').addEventListener('click', confirmReject);
+  document.getElementById('reject-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeRejectModal(); });
+
+  // ---- 课程订单（平台/机构共用） ----
+  const OD_PAGE_SIZE = 10;
+  let odPage = 1;
+  let odTab = 'all';
+  let currentRefundOrderId = null;
+
+  function applyOrderScope(){
+    const isPlatform = orderScope === 'platform';
+    document.getElementById('od-institution').style.display = isPlatform ? '' : 'none';
+    document.getElementById('od-scope-label').textContent = isPlatform ? '所属机构' : '当前机构';
+    if(isPlatform){
+      document.getElementById('od-institution').innerHTML = '<option value="">全部机构</option>' + ORGS.map(o => '<option value="' + o + '">' + o + '</option>').join('');
+      document.getElementById('od-scope-tip').textContent = '';
+      document.getElementById('od-desc').textContent = '查看平台所有机构的课程订单与退款记录。';
+    }else{
+      document.getElementById('od-institution').value = '';
+      document.getElementById('od-scope-tip').innerHTML = '<span class="dot"></span>仅展示当前机构「' + currentOrg + '」的订单';
+      document.getElementById('od-desc').textContent = '查看本机构的课程订单与退款申请，可审核线下课程退款。';
+    }
+  }
+
+  function getFilteredOrders(){
+    const keyword = document.getElementById('od-keyword').value.trim();
+    const type = document.getElementById('od-type').value;
+    const inst = orderScope === 'org' ? currentOrg : document.getElementById('od-institution').value;
+    return orders.filter(o => {
+      if(inst && o.institution !== inst) return false;
+      if(odTab !== 'all' && o.status !== odTab) return false;
+      if(keyword && !(o.orderId.includes(keyword) || o.nickname.includes(keyword) || o.phone.includes(keyword))) return false;
+      if(type && o.courseType !== type) return false;
+      return true;
+    });
+  }
+
+  function renderOdPager(totalPages){
+    let html = '<button class="page-btn" data-odpg="prev"' + (odPage <= 1 ? ' disabled' : '') + '>‹</button>';
+    for(let i = 1; i <= totalPages; i++){
+      html += '<button class="page-btn' + (i === odPage ? ' active' : '') + '" data-odpg="' + i + '">' + i + '</button>';
+    }
+    html += '<button class="page-btn" data-odpg="next"' + (odPage >= totalPages ? ' disabled' : '') + '>›</button>';
+    document.getElementById('od-page-btns').innerHTML = html;
+    document.getElementById('od-page-btns').querySelectorAll('[data-odpg]').forEach(b => {
+      b.addEventListener('click', () => {
+        const v = b.dataset.odpg;
+        if(v === 'prev') odPage = Math.max(1, odPage - 1);
+        else if(v === 'next') odPage = Math.min(totalPages, odPage + 1);
+        else odPage = parseInt(v, 10);
+        renderOrders();
+      });
+    });
+  }
+
+  function updateOdTabCounts(){
+    const inst = orderScope === 'org' ? currentOrg : document.getElementById('od-institution').value;
+    const base = orders.filter(o => !inst || o.institution === inst);
+    const cnt = s => base.filter(o => o.status === s).length;
+    document.getElementById('odt-all').textContent = base.length;
+    document.getElementById('odt-normal').textContent = cnt('normal');
+    document.getElementById('odt-refunding').textContent = cnt('refunding');
+    document.getElementById('odt-refunded').textContent = cnt('refunded');
+    document.getElementById('odt-refundRejected').textContent = cnt('refundRejected');
+  }
+
+  function renderOrders(){
+    updateOdTabCounts();
+    const list = getFilteredOrders();
+    const total = list.length;
+    const totalPages = Math.max(1, Math.ceil(total / OD_PAGE_SIZE));
+    if(odPage > totalPages) odPage = totalPages;
+    const start = (odPage - 1) * OD_PAGE_SIZE;
+    const pageData = list.slice(start, start + OD_PAGE_SIZE);
+
+    document.getElementById('od-count').textContent = '共 ' + total + ' 笔订单';
+    document.getElementById('od-page-info').textContent = total ? ('第 ' + odPage + ' / ' + totalPages + ' 页 · 共 ' + total + ' 条') : '暂无数据';
+
+    if(!pageData.length){
+      document.getElementById('od-body').innerHTML = '<tr><td colspan="10" class="empty-cell">暂无订单记录</td></tr>';
+    }else{
+      document.getElementById('od-body').innerHTML = pageData.map(o =>
+        '<tr>' +
+          '<td><span class="inst-name">' + o.orderId + '</span></td>' +
+          '<td>' + o.nickname + '</td>' +
+          '<td>' + o.phone + '</td>' +
+          '<td>' + o.courseName + (o.lessonName && o.lessonName !== '整门课程' ? '<div style="font-size:11.5px;color:var(--muted)">' + o.lessonName + '</div>' : '') + '</td>' +
+          '<td>' + typeTag(o.courseType) + '</td>' +
+          '<td>' + o.institution + '</td>' +
+          '<td style="font-weight:600;color:var(--green-deep)">¥' + o.payAmount + '</td>' +
+          '<td>' + o.orderTime + '</td>' +
+          '<td>' + orderStatusTag(o.status) + '</td>' +
+          '<td><div style="display:flex;gap:8px">' +
+            '<button class="btn-outline" data-od-view="' + o.orderId + '">查看详情</button>' +
+            (orderScope === 'org' && o.status === 'refunding' ? '<button class="btn-outline" data-od-refund="' + o.orderId + '">审核退款</button>' : '') +
+          '</div></td>' +
+        '</tr>'
+      ).join('');
+
+      document.getElementById('od-body').querySelectorAll('[data-od-view]').forEach(b => b.addEventListener('click', () => openOrderDetail(b.dataset.odView)));
+      document.getElementById('od-body').querySelectorAll('[data-od-refund]').forEach(b => b.addEventListener('click', () => openRefundReview(b.dataset.odRefund)));
+    }
+    renderOdPager(totalPages);
+  }
+
+  function applyOdFilter(){ odPage = 1; renderOrders(); }
+  document.getElementById('od-search').addEventListener('click', applyOdFilter);
+  document.getElementById('od-reset').addEventListener('click', () => {
+    document.getElementById('od-keyword').value = '';
+    document.getElementById('od-type').value = '';
+    odTab = 'all';
+    document.querySelectorAll('#od-tabs .tab').forEach(x => x.classList.toggle('active', x.dataset.odTab === 'all'));
+    if(orderScope === 'platform') document.getElementById('od-institution').value = '';
+    applyOdFilter();
+  });
+  document.getElementById('od-keyword').addEventListener('keydown', e => { if(e.key === 'Enter') applyOdFilter(); });
+  ['od-type','od-institution'].forEach(id => document.getElementById(id).addEventListener('change', applyOdFilter));
+
+  // 订单状态 tab 切换
+  document.querySelectorAll('#od-tabs .tab').forEach(t => {
+    t.addEventListener('click', () => {
+      odTab = t.dataset.odTab;
+      document.querySelectorAll('#od-tabs .tab').forEach(x => x.classList.toggle('active', x === t));
+      applyOdFilter();
+    });
+  });
+
+  function openOrderDetail(orderId){
+    const o = orders.find(x => x.orderId === orderId);
+    if(!o) return;
+    const basic = [
+      ['订单号', o.orderId], ['用户昵称', o.nickname], ['手机号码', o.phone],
+      ['课程名称', o.courseName], ['课时', o.lessonName || '整门课程'],
+      ['课程类型', TYPE_LABELS[o.courseType]], ['所属机构', o.institution],
+      ['支付金额', '¥' + o.payAmount], ['支付方式', o.payMethod],
+      ['下单时间', o.orderTime], ['订单状态', ORDER_STATUS[o.status]],
+    ];
+    let html = '<div class="info-card block-card"><div class="info-card-head">订单信息</div><div class="info-grid">' + basic.map(f => fieldItem(f[0], f[1])).join('') + '</div></div>';
+    if(o.courseType === 'offline'){
+      const refund = [
+        ['打卡记录数', o.checkinCount + ' 次'],
+        ['退款申请时间', o.refundTime || '--'],
+        ['退款原因', o.refundReason || '--'],
+        ['退款审核时间', o.refundReviewTime || '--'],
+        ['退款审核人', o.refundReviewer || '--'],
+        ['驳回原因', o.refundRejectReason || '--'],
+      ];
+      html += '<div class="info-card block-card"><div class="info-card-head">退款信息（仅线下课程可退款）</div><div class="info-grid">' + refund.map(f => fieldItem(f[0], f[1])).join('') + '</div></div>';
+    }else{
+      html += '<div class="info-card block-card"><div class="info-card-head">退款说明</div><div class="block-body">线上课程支付后即可解锁视频，不支持退款。</div></div>';
+    }
+    document.getElementById('ord-detail-body').innerHTML = html;
+    document.getElementById('order-detail-modal').classList.add('show');
+  }
+
+  function openRefundReview(orderId){
+    const o = orders.find(x => x.orderId === orderId);
+    if(!o) return;
+    currentRefundOrderId = orderId;
+    document.getElementById('rr-name').textContent = o.orderId;
+    document.getElementById('rr-sub').textContent = o.courseName + ' · ' + o.nickname;
+    document.getElementById('rr-info').innerHTML =
+      fieldItem('用户昵称', o.nickname) + fieldItem('手机号码', o.phone) +
+      fieldItem('课程名称', o.courseName) + fieldItem('支付金额', '¥' + o.payAmount) +
+      fieldItem('打卡记录数', o.checkinCount + ' 次') + fieldItem('退款原因', o.refundReason || '--');
+    document.getElementById('rr-reason').value = '';
+    document.getElementById('refund-review-modal').classList.add('show');
+  }
+
+  function approveRefund(){
+    const o = orders.find(x => x.orderId === currentRefundOrderId);
+    if(!o) return;
+    if(o.checkinCount > 0){
+      toast('该订单已有打卡记录，无法退款', true);
+      return;
+    }
+    o.status = 'refunded';
+    o.refundReviewTime = nowStr();
+    o.refundReviewer = CURRENT_USER;
+    toast('已通过退款「' + o.orderId + '」');
+    document.getElementById('refund-review-modal').classList.remove('show');
+    renderOrders();
+  }
+
+  function rejectRefund(){
+    const reason = document.getElementById('rr-reason').value.trim();
+    if(!reason){ toast('请填写驳回原因', true); return; }
+    const o = orders.find(x => x.orderId === currentRefundOrderId);
+    if(!o) return;
+    o.status = 'refundRejected';
+    o.refundRejectReason = reason;
+    o.refundReviewTime = nowStr();
+    o.refundReviewer = CURRENT_USER;
+    toast('已驳回退款「' + o.orderId + '」');
+    document.getElementById('refund-review-modal').classList.remove('show');
+    renderOrders();
+  }
+
+  function closeOrderDetail(){ document.getElementById('order-detail-modal').classList.remove('show'); }
+  document.getElementById('ord-close').addEventListener('click', closeOrderDetail);
+  document.getElementById('ord-cancel').addEventListener('click', closeOrderDetail);
+  document.getElementById('order-detail-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeOrderDetail(); });
+
+  function closeRefundReview(){ document.getElementById('refund-review-modal').classList.remove('show'); }
+  document.getElementById('rr-close').addEventListener('click', closeRefundReview);
+  document.getElementById('rr-cancel').addEventListener('click', closeRefundReview);
+  document.getElementById('rr-approve').addEventListener('click', approveRefund);
+  document.getElementById('rr-reject').addEventListener('click', rejectRefund);
+  document.getElementById('refund-review-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeRefundReview(); });
+
+  // ---- 课程管理 ----
+  const CM_PAGE_SIZE = 10;
+  let cmPage = 1;
+  let cmTab = 'all';
+
+  function getFilteredManageCourses(){
+    const name = document.getElementById('cm-name').value.trim();
+    const type = document.getElementById('cm-type').value;
+    return courses.filter(c => {
+      if(c.institution !== currentOrg) return false;
+      if(cmTab !== 'all' && c.status !== cmTab) return false;
+      if(name && !c.name.includes(name)) return false;
+      if(type && c.type !== type) return false;
+      return true;
+    });
+  }
+
+  function renderCmPager(totalPages){
+    let html = '<button class="page-btn" data-cmpg="prev"' + (cmPage <= 1 ? ' disabled' : '') + '>‹</button>';
+    for(let i = 1; i <= totalPages; i++){
+      html += '<button class="page-btn' + (i === cmPage ? ' active' : '') + '" data-cmpg="' + i + '">' + i + '</button>';
+    }
+    html += '<button class="page-btn" data-cmpg="next"' + (cmPage >= totalPages ? ' disabled' : '') + '>›</button>';
+    document.getElementById('cm-page-btns').innerHTML = html;
+    document.getElementById('cm-page-btns').querySelectorAll('[data-cmpg]').forEach(b => {
+      b.addEventListener('click', () => {
+        const v = b.dataset.cmpg;
+        if(v === 'prev') cmPage = Math.max(1, cmPage - 1);
+        else if(v === 'next') cmPage = Math.min(totalPages, cmPage + 1);
+        else cmPage = parseInt(v, 10);
+        renderCourseManage();
+      });
+    });
+  }
+
+  function courseManageActions(c){
+    const b = [];
+    if(c.status === 'draft' || c.status === 'rejected'){
+      b.push('<button class="btn-outline" data-cm-edit="' + c.id + '">编辑</button>');
+      b.push('<button class="btn-outline" data-cm-submit="' + c.id + '">提交审核</button>');
+    }
+    if(c.status === 'pending'){
+      b.push('<button class="btn-outline" data-cm-withdraw="' + c.id + '">撤回审核</button>');
+      if(c.rejectReason){
+        b.push('<button class="btn-outline" data-cm-reason="' + c.id + '">打回原因</button>');
+      }
+    }
+    if(c.status === 'rejected'){
+      b.push('<button class="btn-outline" data-cm-reason="' + c.id + '">驳回原因</button>');
+    }
+    if(c.status === 'published'){
+      b.push('<button class="btn-outline" data-cm-toggle="' + c.id + '">下架</button>');
+    }
+    if(c.status === 'off'){
+      b.push('<button class="btn-outline" data-cm-toggle="' + c.id + '">上架</button>');
+      b.push('<button class="btn-outline" data-cm-edit="' + c.id + '">编辑</button>');
+    }
+    if(c.status === 'published' || c.status === 'off'){
+      b.push('<button class="btn-outline" data-cm-enroll="' + c.id + '">报名用户</button>');
+    }
+    b.push('<button class="btn-outline" data-cm-del="' + c.id + '">删除</button>');
+    return b.join('');
+  }
+
+  function updateCmTabCounts(){
+    const orgCourses = courses.filter(c => c.institution === currentOrg);
+    const cnt = s => orgCourses.filter(c => c.status === s).length;
+    document.getElementById('cmt-all').textContent = orgCourses.length;
+    document.getElementById('cmt-draft').textContent = cnt('draft');
+    document.getElementById('cmt-pending').textContent = cnt('pending');
+    document.getElementById('cmt-published').textContent = cnt('published');
+    document.getElementById('cmt-rejected').textContent = cnt('rejected');
+    document.getElementById('cmt-off').textContent = cnt('off');
+  }
+
+  function renderCourseManage(){
+    updateCmTabCounts();
+    const list = getFilteredManageCourses();
+    const total = list.length;
+    const totalPages = Math.max(1, Math.ceil(total / CM_PAGE_SIZE));
+    if(cmPage > totalPages) cmPage = totalPages;
+    const start = (cmPage - 1) * CM_PAGE_SIZE;
+    const pageData = list.slice(start, start + CM_PAGE_SIZE);
+
+    document.getElementById('cm-count').textContent = '共 ' + total + ' 门课程';
+    document.getElementById('cm-page-info').textContent = total ? ('第 ' + cmPage + ' / ' + totalPages + ' 页 · 共 ' + total + ' 条') : '暂无数据';
+
+    if(!pageData.length){
+      document.getElementById('cm-body').innerHTML = '<tr><td colspan="8" class="empty-cell">当前机构暂无课程，点击右上角「新增课程」开始上传</td></tr>';
+    }else{
+      document.getElementById('cm-body').innerHTML = pageData.map(c =>
+        '<tr>' +
+          '<td><div class="course-cell">' + coverHTML(c) + '<div class="cc-main"><b>' + c.name + '</b></div></div></td>' +
+          '<td>' + typeTag(c.type) + '</td>' +
+          '<td>' + priceText(c.price) + '</td>' +
+          '<td>' + c.lessons.length + ' 节</td>' +
+          '<td>' + enrollCount(c.id) + ' 人</td>' +
+          '<td>' + courseStatusTag(c.status) + '</td>' +
+          '<td>' + coursePhaseHTML(c) + '</td>' +
+          '<td><div style="display:flex;gap:6px;flex-wrap:wrap">' +
+            courseManageActions(c) +
+          '</div></td>' +
+        '</tr>'
+      ).join('');
+
+      document.getElementById('cm-body').querySelectorAll('[data-cm-edit]').forEach(b => b.addEventListener('click', () => openCourseForm(Number(b.dataset.cmEdit))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-submit]').forEach(b => b.addEventListener('click', () => submitCourse(Number(b.dataset.cmSubmit))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-withdraw]').forEach(b => b.addEventListener('click', () => withdrawCourse(Number(b.dataset.cmWithdraw))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-reason]').forEach(b => b.addEventListener('click', () => showRejectReason(Number(b.dataset.cmReason))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-toggle]').forEach(b => b.addEventListener('click', () => toggleCourseStatus(Number(b.dataset.cmToggle))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-enroll]').forEach(b => b.addEventListener('click', () => openEnrollModal(Number(b.dataset.cmEnroll))));
+      document.getElementById('cm-body').querySelectorAll('[data-cm-del]').forEach(b => b.addEventListener('click', () => deleteCourse(Number(b.dataset.cmDel), b)));
+    }
+    renderCmPager(totalPages);
+  }
+
+  function applyCmFilter(){ cmPage = 1; renderCourseManage(); }
+  document.getElementById('cm-search').addEventListener('click', applyCmFilter);
+  document.getElementById('cm-reset').addEventListener('click', () => {
+    document.getElementById('cm-name').value = '';
+    document.getElementById('cm-type').value = '';
+    cmTab = 'all';
+    document.querySelectorAll('#cm-tabs .tab').forEach(x => x.classList.toggle('active', x.dataset.cmTab === 'all'));
+    applyCmFilter();
+  });
+  document.getElementById('cm-name').addEventListener('keydown', e => { if(e.key === 'Enter') applyCmFilter(); });
+  document.getElementById('cm-type').addEventListener('change', applyCmFilter);
+  document.getElementById('cm-add').addEventListener('click', () => openCourseForm(null));
+
+  // 审核状态 tab 切换
+  document.querySelectorAll('#cm-tabs .tab').forEach(t => {
+    t.addEventListener('click', () => {
+      cmTab = t.dataset.cmTab;
+      document.querySelectorAll('#cm-tabs .tab').forEach(x => x.classList.toggle('active', x === t));
+      applyCmFilter();
+    });
+  });
+
+  function submitCourse(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    c.status = 'pending';
+    c.submitTime = nowStr();
+    toast('已提交审核，等待平台审核');
+    renderCourseManage();
+    renderCourseReview();
+  }
+
+  function withdrawCourse(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    c.status = 'draft';
+    c.submitTime = '';
+    toast('已撤回审核，课程回到草稿状态');
+    renderCourseManage();
+    renderCourseReview();
+  }
+
+  function showRejectReason(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    document.getElementById('ri-name').textContent = c.name;
+    document.getElementById('ri-sub').textContent = c.institution;
+    document.getElementById('ri-status').textContent = STATUS_LABELS[c.status] || '--';
+    document.getElementById('ri-reviewer').textContent = c.reviewer || '--';
+    document.getElementById('ri-time').textContent = c.reviewTime || '--';
+    document.getElementById('ri-reason').textContent = c.rejectReason || '无';
+    document.getElementById('review-info-modal').classList.add('show');
+  }
+
+  function closeReviewInfoModal(){ document.getElementById('review-info-modal').classList.remove('show'); }
+  document.getElementById('ri-close').addEventListener('click', closeReviewInfoModal);
+  document.getElementById('ri-cancel').addEventListener('click', closeReviewInfoModal);
+  document.getElementById('review-info-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeReviewInfoModal(); });
+
+  function toggleCourseStatus(id){
+    const c = courses.find(x => x.id === id);
+    if(!c) return;
+    c.status = c.status === 'published' ? 'off' : 'published';
+    toast(c.status === 'published' ? '课程已上架' : '课程已下架');
+    renderCourseManage();
+    renderCourseList();
+  }
+
+  function deleteCourse(id, btn){
+    if(btn.dataset.confirm === '1'){
+      const idx = courses.findIndex(c => c.id === id);
+      if(idx > -1){
+        courses.splice(idx, 1);
+        for(let i = enrollments.length - 1; i >= 0; i--){
+          if(enrollments[i].courseId === id) enrollments.splice(i, 1);
+        }
+        toast('课程已删除');
+        renderCourseManage();
+        renderCourseList();
+      }
+      return;
+    }
+    btn.dataset.confirm = '1';
+    btn.textContent = '确认删除';
+    btn.style.color = '#d4694e';
+    btn.style.borderColor = '#d4694e';
+    setTimeout(() => {
+      btn.dataset.confirm = '0';
+      btn.textContent = '删除';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  }
+
+  // ---- 课程表单 ----
+  let editingCourseId = null;
+  let currentFormType = 'online';
+  const lessonBox = document.getElementById('cform-lessons');
+
+  function lessonRowHTML(type, idx, l){
+    l = l || {};
+    const title = '<input class="f-title" placeholder="第 ' + (idx + 1) + ' 课标题，如：认识智能手机" value="' + (l.t || '') + '">';
+    let fields, gridClass = 'lr-fields';
+    if(type === 'online'){
+      gridClass = 'lr-fields three';
+      const video = '<label class="video-upload' + (l.video ? ' done' : '') + '" style="grid-column:1/-1">' +
+        '<input type="file" accept="video/*">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>' +
+        '<span>' + (l.video || '上传视频') + '</span>' +
+      '</label>';
+      fields = title +
+        '<input class="lesson-duration" placeholder="上传后自动获取" value="' + (l.d || '') + '" readonly>' +
+        '<input type="number" class="lesson-price" placeholder="单价（元）" value="' + (l.price || '') + '" min="0">' +
+        '<input type="number" class="lesson-preview" placeholder="试看（分钟，0=不开启）" value="' + (l.preview || '') + '" min="0">' +
+        video;
+    }else{
+      fields = title +
+        '<input type="date" class="lesson-date" value="' + (l.date || '') + '">' +
+        '<input placeholder="上课时间，如：09:00-10:30" value="' + (l.time || '') + '">';
+    }
+    return '<div class="lesson-row">' +
+      '<span class="lr-no">' + (idx + 1) + '</span>' +
+      '<div class="' + gridClass + '">' + fields + '</div>' +
+      '<button class="lesson-del" data-ldel>✕</button>' +
+    '</div>';
+  }
+
+  function renumberLessons(){
+    lessonBox.querySelectorAll('.lesson-row').forEach((row, i) => {
+      row.querySelector('.lr-no').textContent = i + 1;
+    });
+  }
+
+  function updateLessonTotal(){
+    let total = 0;
+    lessonBox.querySelectorAll('input.lesson-price').forEach(inp => {
+      const v = Number(inp.value);
+      if(!isNaN(v) && v > 0) total += v;
+    });
+    const el = document.getElementById('lesson-total');
+    if(el) el.textContent = '¥' + total;
+  }
+
+  function setOfflineFieldsVisible(offline){
+    document.getElementById('cform-price-item').style.display = offline ? '' : 'none';
+    document.getElementById('cform-contact-item').style.display = offline ? '' : 'none';
+    document.getElementById('cform-capacity-item').style.display = offline ? '' : 'none';
+    document.getElementById('cform-location-item').style.display = offline ? '' : 'none';
+    document.getElementById('cform-signup-item').style.display = offline ? '' : 'none';
+    document.getElementById('cform-course-item').style.display = offline ? '' : 'none';
+  }
+
+  function applyLessonDateRange(){
+    const cs = document.getElementById('cform-course-start').value;
+    const ce = document.getElementById('cform-course-end').value;
+    lessonBox.querySelectorAll('input.lesson-date').forEach(inp => {
+      if(cs){ inp.min = cs; } else { inp.removeAttribute('min'); }
+      if(ce){ inp.max = ce; } else { inp.removeAttribute('max'); }
+    });
+  }
+
+  function renderLessonEditor(type, lessons){
+    const head = type === 'online' ? '线上视频 · 每节课上传视频并设置单价' : '线下课程 · 每节课含日期与时间';
+    const rows = lessons.length
+      ? lessons.map((l, i) => lessonRowHTML(type, i, l)).join('')
+      : (lessonRowHTML(type, 0) + lessonRowHTML(type, 1));
+    const headRight = type === 'online'
+      ? '<span class="lesson-total">课程总价：<b id="lesson-total">¥0</b></span>'
+      : '';
+    lessonBox.innerHTML =
+      '<div class="le-head"><div style="display:flex;align-items:center;gap:10px"><b>课时内容</b><span>' + head + '</span></div>' + headRight + '</div>' +
+      '<div id="cform-lesson-rows">' + rows + '</div>' +
+      '<button class="add-lesson-btn" id="cform-add-lesson">+ 添加课时</button>';
+    if(type === 'online') updateLessonTotal();
+  }
+
+  lessonBox.addEventListener('click', e => {
+    const del = e.target.closest('[data-ldel]');
+    if(del){
+      if(lessonBox.querySelectorAll('.lesson-row').length <= 1){ toast('至少保留 1 个课时', true); return; }
+      del.closest('.lesson-row').remove();
+      renumberLessons();
+      updateLessonTotal();
+      return;
+    }
+    if(e.target.closest('#cform-add-lesson')){
+      const rows = lessonBox.querySelectorAll('.lesson-row');
+      const div = document.createElement('div');
+      div.innerHTML = lessonRowHTML(currentFormType, rows.length);
+      lessonBox.querySelector('#cform-lesson-rows').appendChild(div.firstElementChild);
+      renumberLessons();
+      applyLessonDateRange();
+      updateLessonTotal();
+    }
+  });
+
+  // 上传视频（change 事件）：显示文件名，并自动读取视频时长
+  function formatDuration(sec){
+    const total = Math.round(sec);
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    if(m > 0) return m + '分钟' + (s > 0 ? s + '秒' : '');
+    return s + '秒';
+  }
+  function readVideoDuration(file, label){
+    const row = label.closest('.lesson-row');
+    const durInput = row ? row.querySelector('.lesson-duration') : null;
+    if(!durInput) return;
+    const url = URL.createObjectURL(file);
+    const video = document.createElement('video');
+    video.preload = 'metadata';
+    video.onloadedmetadata = () => {
+      const sec = video.duration;
+      URL.revokeObjectURL(url);
+      durInput.value = (sec && !isNaN(sec)) ? formatDuration(sec) : '';
+    };
+    video.onerror = () => { URL.revokeObjectURL(url); };
+    video.src = url;
+  }
+
+  lessonBox.addEventListener('change', e => {
+    if(e.target.type === 'file'){
+      const label = e.target.closest('.video-upload');
+      const span = label.querySelector('span');
+      const file = e.target.files && e.target.files[0];
+      const name = file ? file.name : '';
+      if(name){
+        label.classList.add('done');
+        span.textContent = name;
+        readVideoDuration(file, label);
+      }
+    }
+  });
+
+  // 课时单价变化时，实时更新总价
+  lessonBox.addEventListener('input', e => {
+    if(e.target.classList.contains('lesson-price')) updateLessonTotal();
+  });
+
+  document.querySelectorAll('input[name="cform-type"]').forEach(r => {
+    r.addEventListener('change', () => {
+      currentFormType = r.value;
+      const offline = r.value === 'offline';
+      document.getElementById('rt-online').classList.toggle('checked', !offline);
+      document.getElementById('rt-offline').classList.toggle('checked', offline);
+      setOfflineFieldsVisible(offline);
+      const titles = [];
+      lessonBox.querySelectorAll('.lesson-row .f-title').forEach(inp => titles.push(inp.value));
+      renderLessonEditor(currentFormType, titles.map(t => ({t})));
+      applyLessonDateRange();
+    });
+  });
+
+  function openCourseForm(id){
+    editingCourseId = id;
+    const c = id === null ? null : courses.find(x => x.id === id);
+    document.getElementById('cform-title').textContent = c ? '编辑课程' : '新增课程';
+    document.getElementById('cform-sub').textContent = c ? '修改课程信息并保存' : '填写课程信息并上传课时内容';
+    // 机构账号只能管理本机构课程，「所属机构」锁定为当前机构
+    document.getElementById('cform-institution').innerHTML = '<option value="' + currentOrg + '">' + currentOrg + '</option>';
+    document.getElementById('cform-institution').value = currentOrg;
+    document.getElementById('cform-institution').disabled = true;
+    document.getElementById('cform-name').value = c ? c.name : '';
+    document.getElementById('cform-intro').value = c ? c.intro : '';
+    const type = c ? c.type : 'online';
+    currentFormType = type;
+    document.querySelectorAll('input[name="cform-type"]').forEach(r => { r.checked = (r.value === type); });
+    document.getElementById('rt-online').classList.toggle('checked', type === 'online');
+    document.getElementById('rt-offline').classList.toggle('checked', type === 'offline');
+    const offline = type === 'offline';
+    setOfflineFieldsVisible(offline);
+    document.getElementById('cform-price').value = c ? c.price : '';
+    document.getElementById('cform-contact').value = (c && c.contactPhone) || '';
+    document.getElementById('cform-capacity').value = (c && c.capacity) || '';
+    document.getElementById('cform-location').value = (c && c.location) || '';
+    document.getElementById('cform-signup-start').value = (c && c.signupStart) || '';
+    document.getElementById('cform-signup-end').value = (c && c.signupEnd) || '';
+    document.getElementById('cform-course-start').value = (c && c.courseStart) || '';
+    document.getElementById('cform-course-end').value = (c && c.courseEnd) || '';
+    renderLessonEditor(type, c ? c.lessons : []);
+    applyLessonDateRange();
+    document.getElementById('course-form-modal').classList.add('show');
+  }
+
+  function closeCourseForm(){ document.getElementById('course-form-modal').classList.remove('show'); }
+
+  // 课程时间区间变化时，约束课时日期范围
+  ['cform-course-start','cform-course-end'].forEach(id => {
+    document.getElementById(id).addEventListener('change', applyLessonDateRange);
+  });
+
+  function collectCourseForm(){
+    const name = document.getElementById('cform-name').value.trim();
+    const institution = currentOrg;
+    const intro = document.getElementById('cform-intro').value.trim();
+    const type = document.querySelector('input[name="cform-type"]:checked').value;
+
+    if(!name){ toast('请填写课程名称', true); return null; }
+    if(!institution){ toast('请选择所属机构', true); return null; }
+
+    let price = 0, signupStart = '', signupEnd = '', courseStart = '', courseEnd = '';
+    let contactPhone = '', capacity = 0, location = '';
+    if(type === 'offline'){
+      const priceVal = document.getElementById('cform-price').value.trim();
+      if(priceVal === '' || isNaN(Number(priceVal)) || Number(priceVal) < 0){ toast('请填写正确的课程价格', true); return null; }
+      price = Number(priceVal);
+      signupStart = document.getElementById('cform-signup-start').value;
+      signupEnd = document.getElementById('cform-signup-end').value;
+      courseStart = document.getElementById('cform-course-start').value;
+      courseEnd = document.getElementById('cform-course-end').value;
+      contactPhone = document.getElementById('cform-contact').value.trim();
+      location = document.getElementById('cform-location').value.trim();
+      const capVal = document.getElementById('cform-capacity').value.trim();
+      if(!signupStart || !signupEnd){ toast('请填写报名时间区间', true); return null; }
+      if(!courseStart || !courseEnd){ toast('请填写课程时间区间', true); return null; }
+      if(signupStart > signupEnd){ toast('报名开始时间不能晚于结束时间', true); return null; }
+      if(courseStart > courseEnd){ toast('课程开始日期不能晚于结束日期', true); return null; }
+      if(!contactPhone){ toast('请填写联系电话', true); return null; }
+      if(!location){ toast('请填写上课地点', true); return null; }
+      if(capVal === '' || isNaN(Number(capVal)) || Number(capVal) < 1){ toast('请填写正确的招生人数', true); return null; }
+      capacity = Number(capVal);
+    }
+
+    const lessons = [];
+    lessonBox.querySelectorAll('.lesson-row').forEach(row => {
+      const inputs = row.querySelectorAll('input');
+      const t = inputs[0].value.trim();
+      if(!t) return;
+      if(type === 'online'){
+        const label = row.querySelector('.video-upload');
+        const span = label ? label.querySelector('span') : null;
+        const video = (span && span.textContent !== '上传视频') ? span.textContent : '';
+        const pv = inputs[2].value.trim();
+        const prevVal = inputs[3].value.trim();
+        lessons.push({t, d: inputs[1].value.trim(), price: (pv === '' ? 0 : Number(pv)), preview: (prevVal === '' ? 0 : Number(prevVal)), video});
+      }else{
+        lessons.push({t, date: inputs[1].value, time: inputs[2].value.trim()});
+      }
+    });
+    if(!lessons.length){ toast('请至少填写一个课时标题', true); return null; }
+
+    if(type === 'offline'){
+      for(const l of lessons){
+        if(l.date && (l.date < courseStart || l.date > courseEnd)){
+          toast('课时「' + l.t + '」日期需在课程时间区间内', true); return null;
+        }
+      }
+    }else{
+      price = lessons.reduce((s, l) => s + (Number(l.price) || 0), 0);
+    }
+
+    return {name, type, institution, price, intro, lessons,
+      signupStart, signupEnd, courseStart, courseEnd, contactPhone, capacity, location};
+  }
+
+  function saveCourseAs(status, submitTime){
+    const data = collectCourseForm();
+    if(!data) return false;
+    if(editingCourseId === null){
+      const target = Object.assign({id: Date.now(), status, submitTime, rejectReason:'', reviewer:'', reviewTime:''}, data);
+      courses.unshift(target);
+    }else{
+      const target = courses.find(x => x.id === editingCourseId);
+      Object.assign(target, data, {status, submitTime, rejectReason:'', reviewer:'', reviewTime:''});
+    }
+    document.getElementById('course-form-modal').classList.remove('show');
+    renderCourseManage();
+    renderCourseList();
+    renderCourseReview();
+    return true;
+  }
+
+  function saveAsDraft(){
+    if(saveCourseAs('draft', '')) toast('已保存为草稿');
+  }
+  function submitForReview(){
+    if(saveCourseAs('pending', nowStr())) toast('已提交审核，等待平台审核');
+  }
+
+  document.getElementById('cform-close').addEventListener('click', closeCourseForm);
+  document.getElementById('cform-cancel').addEventListener('click', closeCourseForm);
+  document.getElementById('cform-draft').addEventListener('click', saveAsDraft);
+  document.getElementById('cform-submit').addEventListener('click', submitForReview);
+  document.getElementById('course-form-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeCourseForm(); });
+
+  // ---- 弹窗关闭 ----
+  function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+  document.getElementById('cd-close').addEventListener('click', () => closeModal('course-detail-modal'));
+  document.getElementById('cd-cancel').addEventListener('click', () => closeModal('course-detail-modal'));
+  document.getElementById('course-detail-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeModal('course-detail-modal'); });
+  document.getElementById('em-close').addEventListener('click', () => closeModal('enroll-modal'));
+  document.getElementById('em-cancel').addEventListener('click', () => closeModal('enroll-modal'));
+  document.getElementById('enroll-modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeModal('enroll-modal'); });
+
+  // ---- 初始化 ----
+  fillOrgSelects();
+  renderCourseList();
+  renderCourseReview();
+  renderCourseManage();
 
   // 默认进入养老机构
   activate('institutions');
